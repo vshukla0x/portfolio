@@ -166,7 +166,7 @@ export const PORTFOLIO_DATA = {
       category: "Interactive 3D Web",
       subtitle: "Modern high-performance web experience showcasing full-stack capabilities with GSAP and Framer Motion.",
       image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=900&q=80",
-      link: "https://vshukla0x.github.io",
+      link: "https://vivekk.me",
     },
   ] as ProjectRibbon[],
 
@@ -233,11 +233,11 @@ export const PORTFOLIO_DATA = {
   footer: {
     tickerText: "VIVEK SHUKLA • ASPIRING FULL-STACK DEVELOPER & CYBERSECURITY ENTHUSIAST • OPEN FOR COLLABORATION & NEW OPPORTUNITIES",
     headline: "LET'S TALK",
-    email: "shuklavivek0x@gmail.com",
+    email: "vivekshukla10700@gmail.com",
     socials: [
       { name: "GITHUB", url: "https://github.com/vshukla0x" },
       { name: "LINKEDIN", url: "https://linkedin.com/in/vshukla0x" },
-      { name: "PORTFOLIO", url: "https://vshukla0x.github.io" },
+      { name: "PORTFOLIO", url: "https://vivekk.me" },
     ] as SocialLink[],
     copyright: "VIVEK SHUKLA 2026 — ALL RIGHTS RESERVED",
   },
