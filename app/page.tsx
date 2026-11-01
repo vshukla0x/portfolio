@@ -159,7 +159,7 @@ export default function EchoPortfolio() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#F4F4F0] text-[#0A0A0A] selection:bg-[#0A0A0A] selection:text-[#F4F4F0]">
+    <div className="min-h-screen bg-[#0A0A0A] text-[#F4F4F0] selection:bg-[#0A0A0A] selection:text-[#F4F4F0]">
       {/* =========================================================
           1. PRELOADER / INTRO OVERLAY
       ========================================================= */}
@@ -209,10 +209,10 @@ export default function EchoPortfolio() {
       ========================================================= */}
       <section
         id="home"
-        className="relative min-h-screen w-full bg-[#F4F4F0] flex flex-col justify-between px-6 md:px-12 pt-6 pb-10 overflow-hidden"
+        className="relative min-h-screen w-full bg-[#07090D] text-[#F4F4F0] flex flex-col justify-between px-6 md:px-12 pt-6 pb-10 overflow-hidden"
       >
         {/* Top Navbar */}
-        <header className="relative z-20 flex items-center justify-between border-b border-black/10 pb-4">
+        <header className="relative z-20 flex items-center justify-between border-b border-white/15 pb-4">
           <a
             href="#home"
             className="text-lg font-black tracking-tighter flex items-center gap-1 uppercase"
@@ -221,23 +221,23 @@ export default function EchoPortfolio() {
             <span className="text-xs">{PORTFOLIO_DATA.brand.dot}</span>
           </a>
 
-          <nav className="hidden md:flex items-center gap-7 text-[11px] font-medium uppercase tracking-[0.16em] text-black/70">
-            <a href="#home" className="text-black font-bold">
+          <nav className="hidden md:flex items-center gap-7 text-[11px] font-medium uppercase tracking-[0.16em] text-white/65">
+            <a href="#home" className="text-white font-bold">
               HOME
             </a>
-            <a href="#about" className="hover:text-black transition">
+            <a href="#about" className="hover:text-white transition">
               ABOUT
             </a>
-            <a href="#experience" className="hover:text-black transition">
+            <a href="#experience" className="hover:text-white transition">
               EXPERIENCE
             </a>
-            <a href="#projects" className="hover:text-black transition">
+            <a href="#projects" className="hover:text-white transition">
               PROJECTS
             </a>
-            <a href="#works" className="hover:text-black transition">
+            <a href="#works" className="hover:text-white transition">
               CASE STUDIES
             </a>
-            <a href="#services" className="hover:text-black transition">
+            <a href="#services" className="hover:text-white transition">
               SERVICES
             </a>
           </nav>
@@ -251,8 +251,8 @@ export default function EchoPortfolio() {
         </header>
 
         {/* Centerpiece Typography & Portrait */}
-        <div className="relative my-auto flex flex-col items-center justify-center py-6">
-          <h1 className="select-none text-center font-black uppercase leading-[0.92] tracking-[-0.035em] text-[#0A0A0A] text-[10vw] md:text-[8vw]">
+        <div className="relative z-10 my-auto flex flex-col items-center justify-center py-6">
+          <h1 className="select-none text-center font-black uppercase leading-[0.92] tracking-[-0.035em] text-[#F4F4F0] text-[10vw] md:text-[8vw]">
             {PORTFOLIO_DATA.hero.titleLine1}
             <br />
             {PORTFOLIO_DATA.hero.titleLine2}
@@ -260,7 +260,7 @@ export default function EchoPortfolio() {
 
           {/* Portrait positioned cleanly below the headline with zero overlap */}
           <div className="relative mt-6 md:mt-8 w-[200px] sm:w-[260px] md:w-[310px] aspect-square flex items-center justify-center">
-            <div className="absolute inset-0 rounded-3xl bg-black/[0.04] border border-black/10 scale-105" />
+            <div className="absolute inset-0 rounded-3xl bg-white/[0.035] border border-white/10 scale-105" />
             <img
               src="/hero-portrait.png"
               alt={PORTFOLIO_DATA.brand.name}
@@ -270,14 +270,14 @@ export default function EchoPortfolio() {
         </div>
 
         {/* Bottom Corner Micro-Copy */}
-        <div className="relative z-20 flex flex-col md:flex-row items-start md:items-end justify-between gap-6 text-[10px] uppercase tracking-[0.18em] text-black/75">
+        <div className="relative z-20 flex flex-col md:flex-row items-start md:items-end justify-between gap-6 text-[10px] uppercase tracking-[0.18em] text-white/70">
           <div className="font-semibold">{PORTFOLIO_DATA.hero.roleLabel}</div>
 
           <div className="flex flex-col md:items-end text-left md:text-right gap-4">
-            <p className="max-w-[320px] leading-relaxed text-black/65">
+            <p className="max-w-[320px] leading-relaxed text-white/55">
               {PORTFOLIO_DATA.hero.bio}
             </p>
-            <ul className="flex flex-col md:items-end gap-1 font-bold text-[#0A0A0A]">
+            <ul className="flex flex-col md:items-end gap-1 font-bold text-[#F4F4F0]">
               {PORTFOLIO_DATA.hero.focusAreas.map((area) => (
                 <li key={area}>{area}</li>
               ))}
@@ -535,13 +535,13 @@ export default function EchoPortfolio() {
       ========================================================= */}
       <section
         id="projects"
-        className="relative min-h-screen w-full bg-[#F4F4F0] text-[#0A0A0A] py-20 px-6 md:px-12 flex flex-col justify-between overflow-hidden"
+        className="relative min-h-screen w-full bg-[#0A0A0A] text-[#F4F4F0] py-20 px-6 md:px-12 flex flex-col justify-between overflow-hidden"
       >
         <div className="flex items-center justify-between">
           <h2 className="text-2xl md:text-4xl font-light uppercase tracking-tight">
             FEATURED PROJECTS
           </h2>
-          <span className="text-[10px] uppercase tracking-[0.2em] text-black/50">
+          <span className="text-[10px] uppercase tracking-[0.2em] text-white/50">
             HORIZONTAL WAVE
           </span>
         </div>
@@ -564,7 +564,7 @@ export default function EchoPortfolio() {
                   }}
                   className="group relative w-[290px] sm:w-[360px] md:w-[420px] shrink-0 flex flex-col items-center"
                 >
-                  <div className="relative w-full aspect-[16/10] overflow-hidden rounded-sm shadow-xl bg-[#0A0A0A] border border-black/10">
+                  <div className="relative w-full aspect-[16/10] overflow-hidden rounded-sm shadow-xl bg-[#0A0A0A] border border-white/10">
                     <img
                       src={project.image}
                       alt={project.title}
@@ -586,10 +586,10 @@ export default function EchoPortfolio() {
                   </div>
 
                   <div className="mt-5 text-center">
-                    <div className="text-xs font-semibold text-black/80">
+                    <div className="text-xs font-semibold text-white/80">
                       {project.category}
                     </div>
-                    <div className="text-[11px] text-black/50">
+                    <div className="text-[11px] text-white/50">
                       {project.subtitle}
                     </div>
                   </div>
@@ -603,7 +603,7 @@ export default function EchoPortfolio() {
           <h3 className="text-xl md:text-3xl font-light uppercase tracking-tight">
             SELECTED SHOWCASE
           </h3>
-          <span className="text-[10px] uppercase tracking-[0.2em] text-black/50">
+          <span className="text-[10px] uppercase tracking-[0.2em] text-white/50">
             01 — {String(PORTFOLIO_DATA.landingProjects.length).padStart(2, "0")} ARCHIVE
           </span>
         </div>
@@ -615,7 +615,7 @@ export default function EchoPortfolio() {
       <section
         id="works"
         ref={worksSectionRef}
-        className="relative h-screen w-full bg-[#F4F4F0] text-[#0A0A0A] overflow-hidden flex items-center justify-between px-6 md:px-12"
+        className="relative h-screen w-full bg-[#0A0A0A] text-[#F4F4F0] overflow-hidden flex items-center justify-between px-6 md:px-12"
       >
         {/* Left Active Case Study Indicator */}
         <div
@@ -632,7 +632,7 @@ export default function EchoPortfolio() {
           <h3 className="text-xl lg:text-2xl font-medium tracking-tight uppercase">
             {PORTFOLIO_DATA.works26[activeWorkIndex]?.name}
           </h3>
-          <span className="text-xs text-black/60 mt-1 uppercase">
+          <span className="text-xs text-white/60 mt-1 uppercase">
             ROLE: {PORTFOLIO_DATA.works26[activeWorkIndex]?.role}
           </span>
         </div>
@@ -687,7 +687,7 @@ export default function EchoPortfolio() {
                         : Math.max(0.15, 1 - Math.abs(offsetFromActive) * 0.45),
                     zIndex: 20 - Math.round(Math.abs(offsetFromActive) * 5),
                   }}
-                  className="absolute w-[300px] sm:w-[440px] md:w-[500px] aspect-[16/10] rounded-lg overflow-hidden shadow-2xl bg-white border border-black/10 flex flex-col justify-between"
+                  className="absolute w-[300px] sm:w-[440px] md:w-[500px] aspect-[16/10] rounded-lg overflow-hidden shadow-2xl bg-white border border-white/10 flex flex-col justify-between"
                 >
                   <img
                     src={work.image}
@@ -742,7 +742,7 @@ export default function EchoPortfolio() {
       ========================================================= */}
       <section
         id="services"
-        className="relative w-full bg-[#F4F4F0] text-[#0A0A0A] py-28 px-6 md:px-12 flex flex-col items-center"
+        className="relative w-full bg-[#0A0A0A] text-[#F4F4F0] py-28 px-6 md:px-12 flex flex-col items-center"
       >
         <h2 className="text-3xl md:text-5xl font-light uppercase tracking-tight text-center mb-14">
           SERVICES OFFERED
@@ -759,7 +759,7 @@ export default function EchoPortfolio() {
                 className={`cursor-pointer rounded-2xl transition-all duration-500 px-6 md:px-10 py-6 border ${
                   isOpen
                     ? "bg-[#0A0A0A] text-[#F4F4F0] border-[#0A0A0A] shadow-2xl scale-[1.01]"
-                    : "bg-[#EFECE6] text-[#0A0A0A] border-black/15 hover:border-black/40"
+                    : "bg-[#EFECE6] text-[#F4F4F0] border-white/15 hover:border-black/40"
                 }`}
               >
                 <div className="flex items-center justify-between text-xs uppercase tracking-[0.2em]">
@@ -808,9 +808,9 @@ export default function EchoPortfolio() {
       {/* =========================================================
           8. FOOTER SECTION ("LET'S TALK")
       ========================================================= */}
-      <footer id="contact" className="w-full bg-[#F4F4F0] pt-8 pb-6 px-3 md:px-6">
+      <footer id="contact" className="w-full bg-[#0A0A0A] pt-8 pb-6 px-3 md:px-6">
         {/* Availability Ticker Bar */}
-        <div className="max-w-7xl mx-auto mb-4 flex items-center justify-between border border-black/25 bg-[#F4F4F0] px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.2em] overflow-hidden">
+        <div className="max-w-7xl mx-auto mb-4 flex items-center justify-between border border-black/25 bg-[#0A0A0A] px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.2em] overflow-hidden">
           <div className="animate-marquee whitespace-nowrap flex items-center gap-10">
             <span>{PORTFOLIO_DATA.footer.tickerText}</span>
             <span>•</span>
@@ -832,14 +832,14 @@ export default function EchoPortfolio() {
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-2.5 rounded-full border border-white/25 text-[10px] font-semibold uppercase tracking-[0.2em] text-white hover:bg-white hover:text-black transition"
+                className="px-6 py-2.5 rounded-full border border-white/25 text-[10px] font-semibold uppercase tracking-[0.2em] text-white hover:bg-white hover:text-white transition"
               >
                 {social.name}
               </a>
             ))}
             <a
               href={`mailto:${PORTFOLIO_DATA.footer.email}`}
-              className="px-6 py-2.5 rounded-full bg-[#F4F4F0] text-[#0A0A0A] text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-white/90 transition"
+              className="px-6 py-2.5 rounded-full bg-[#0A0A0A] text-[#F4F4F0] text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-white/90 transition"
             >
               GET IN TOUCH
             </a>
