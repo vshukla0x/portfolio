@@ -759,17 +759,17 @@ export default function EchoPortfolio() {
                 className={`cursor-pointer rounded-2xl transition-all duration-500 px-6 md:px-10 py-6 border ${
                   isOpen
                     ? "bg-[#0A0A0A] text-[#F4F4F0] border-[#0A0A0A] shadow-2xl scale-[1.01]"
-                    : "bg-[#EFECE6] text-[#F4F4F0] border-white/15 hover:border-black/40"
+                    : "bg-[#111111] text-[#F4F4F0] border-white/10 hover:border-white/30"
                 }`}
               >
                 <div className="flex items-center justify-between text-xs uppercase tracking-[0.2em]">
-                  <span className={isOpen ? "text-white/60" : "text-black/40"}>
+                  <span className={isOpen ? "text-white/60" : "text-white/40"}>
                     {service.id}
                   </span>
                   <h3 className="text-sm md:text-base font-bold tracking-[0.15em]">
                     {service.title}
                   </h3>
-                  <span className={isOpen ? "text-white/60" : "text-black/40"}>
+                  <span className={isOpen ? "text-white/60" : "text-white/40"}>
                     •
                   </span>
                 </div>
