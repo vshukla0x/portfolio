@@ -66,7 +66,7 @@
 })();
 
 
-const sections = ['work', 'about', 'contact'].map(id => document.getElementById(id));
+const sections = ['work', 'skills', 'about', 'contact'].map(id => document.getElementById(id));
 const links = document.querySelectorAll('nav a[href^="#"]:not(.brand)');
 let activeSection = null;
 let navigationFrame = 0;

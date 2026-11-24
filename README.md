@@ -1,38 +1,46 @@
-# vivekk.me
+# Vivek’s portfolio
 
-Source code and assets for [vivekk.me](https://vivekk.me/)[cite: 2], the personal engineering portfolio and showcase for Vivek Shukla[cite: 2, 3].
+Source for [vivekk.me](https://vivekk.me/), a student portfolio featuring the ideas, screenshots, and source repositories behind FitForge and Better Tech.
 
-The application is deployed on GitHub Pages with a custom domain, showcasing work across defensive security, application hardening, and full-stack systems[cite: 1, 2].
+FitForge is presented as a prototype in development. Better Tech has a public demo and a source link.
 
----
+## Published website
 
-## Live Deployment
+The live website is the static `site/` directory:
 
-- **Production URL:** [https://vivekk.me/](https://vivekk.me/)
-- **Hosting:** GitHub Pages
-- **DNS / Custom Domain:** Configured via apex `A` records and `CNAME` pointing to GitHub Pages
+- `site/index.html` — content, project stories, links, and page metadata.
+- `site/assets/styles.css` — responsive layout and cursor glow.
+- `site/assets/script.js` — navigation, screenshot viewer, preview switch, and optional audio.
+- `site/assets/*.webp` — optimized project screenshots.
+- `site/CNAME` — the existing custom domain.
 
----
+HTML, CSS, and JavaScript run directly in the browser. There is no build step for this version. The Next.js files elsewhere in the repository belong to the earlier implementation and are not used by the current Pages workflow.
 
-## Tech Stack
+## Preview locally
 
-- **Framework:** Next.js (Static HTML Export via `output: 'export'`)
-- **Styling:** Tailwind CSS / CSS Modules
-- **Fonts:** Geist (`next/font`)[cite: 4]
-- **CI/CD:** GitHub Actions (Deploy to GitHub Pages workflow)
+From the repository root:
 
----
+```sh
+python3 -m http.server 8080 --directory site
+```
 
-## Local Development
+Open `http://localhost:8080`. The website also opens directly from `site/index.html`.
 
-### Prerequisites
+## Publish an update
 
-- [Node.js](https://nodejs.org/) (v18.17 or later)
-- npm, pnpm, yarn, or bun[cite: 4]
+Commit changes to `site/` and push `main`. The existing `.github/workflows/deploy.yml` uploads that directory to GitHub Pages. Check the Actions tab for deployment status.
 
-### Setup
+## Interaction and accessibility
 
-1. Clone the repository:
-   ```bash
-   git clone [https://github.com/vshukla0x/](https://github.com/vshukla0x/)<your-repo-name>.git
-   cd <your-repo-name>
+- A mobile navigation menu, visible keyboard focus, a skip link, and active section links.
+- A horizontally scrollable FitForge gallery and native modal screenshot viewer.
+- Responsive images, lazy loading, and fixed image dimensions to limit layout shifts.
+- Cursor glow with an off switch and reduced-motion support.
+- Optional cursor and click audio. Sound starts muted and only initializes after a visitor enables it.
+
+## Featured source repositories
+
+- [FitForge](https://github.com/vshukla0x/fit-forge-) — HTML, CSS, JavaScript, and browser local storage.
+- [Better Tech](https://github.com/vshukla0x/better-tech-) — React, TypeScript, Vite, and CSS. [Live demo](https://better-tech-chi.vercel.app/).
+
+Keep availability labels, technology lists, and personal project stories accurate when updating the page. Add a résumé link only when the corresponding PDF exists, and a contact form only with a configured destination.
