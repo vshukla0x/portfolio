@@ -1,8 +1,8 @@
 # Vivek’s portfolio
 
-Source for [vivekk.me](https://vivekk.me/), a student portfolio featuring the ideas, screenshots, and source repositories behind FitForge and Better Tech.
+Source for [vivekk.me](https://vivekk.me/), a student portfolio featuring the ideas, screenshots, and source repositories behind First Set and Better Tech.
 
-FitForge is presented as a prototype in development. Better Tech has a public demo and a source link.
+First Set is presented as a prototype in development. Better Tech has a public demo and a source link.
 
 ## Published website
 
@@ -33,14 +33,14 @@ Commit changes to `site/` and push `main`. The existing `.github/workflows/deplo
 ## Interaction and accessibility
 
 - A mobile navigation menu, visible keyboard focus, a skip link, and active section links.
-- A horizontally scrollable FitForge gallery and native modal screenshot viewer.
+- A horizontally scrollable First Set gallery and native modal screenshot viewer.
 - Responsive images, lazy loading, and fixed image dimensions to limit layout shifts.
 - Cursor glow with an off switch and reduced-motion support.
 - Optional cursor and click audio. Sound starts muted and only initializes after a visitor enables it.
 
 ## Featured source repositories
 
-- [FitForge](https://github.com/vshukla0x/fit-forge-) — HTML, CSS, JavaScript, and browser local storage.
+- [First Set](https://github.com/vshukla0x/fit-forge-) — HTML, CSS, JavaScript, and browser local storage.
 - [Better Tech](https://github.com/vshukla0x/better-tech-) — React, TypeScript, Vite, and CSS. [Live demo](https://better-tech-chi.vercel.app/).
 
 Keep availability labels, technology lists, and personal project stories accurate when updating the page. Add a résumé link only when the corresponding PDF exists, and a contact form only with a configured destination.
