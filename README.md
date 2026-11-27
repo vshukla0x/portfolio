@@ -1,20 +1,16 @@
 # Vivek’s portfolio
 
-Source for [vivekk.me](https://vivekk.me/), a student portfolio featuring the ideas, screenshots, and source repositories behind First Set and Better Tech.
-
-First Set is presented as a prototype in development. Better Tech has a public demo and a source link.
+Source for [vivekk.me](https://vivekk.me/), a single-file student portfolio showcasing genuine work by Vivek Shukla: IET Grid, O.A.S.I.S., First Set, and Better Tech.
 
 ## Published website
 
-The live website is the static `site/` directory:
+The live website is served from the static `site/` directory:
 
-- `site/index.html` — content, project stories, links, and page metadata.
-- `site/assets/styles.css` — responsive layout and cursor glow.
-- `site/assets/script.js` — navigation, screenshot viewer, preview switch, and optional audio.
-- `site/assets/*.webp` — optimized project screenshots.
-- `site/CNAME` — the existing custom domain.
+- `site/index.html` — self-contained HTML5, CSS3, Vanilla JS, and flow-field Canvas implementation.
+- `site/assets/*.webp` — actual application screenshots in crisp 16:10 WebP assets.
+- `site/CNAME` — custom domain (`vivekk.me`).
 
-HTML, CSS, and JavaScript run directly in the browser. There is no build step for this version. The Next.js files elsewhere in the repository belong to the earlier implementation and are not used by the current Pages workflow.
+No build step or runtime bundler dependencies exist for this version. Legacy Next.js files elsewhere in the repository are not part of `.github/workflows/deploy.yml`, which publishes `./site` directly to GitHub Pages.
 
 ## Preview locally
 
@@ -24,23 +20,18 @@ From the repository root:
 python3 -m http.server 8080 --directory site
 ```
 
-Open `http://localhost:8080`. The website also opens directly from `site/index.html`.
+Then open `http://localhost:8080`.
 
-## Publish an update
+## Interaction & accessibility
 
-Commit changes to `site/` and push `main`. The existing `.github/workflows/deploy.yml` uploads that directory to GitHub Pages. Check the Actions tab for deployment status.
+- Multilingual entry greeting curtain (once per session, skipped under `prefers-reduced-motion`).
+- Segmented 24-tick gallery scrubber synchronized across drag, wheel, click, touch, and keyboard navigation without trapping vertical page scroll.
+- Masked typography reveals, static/reduced-motion fallbacks, and native `<dialog>` project details.
+- Low-contrast neutral grey flow-field canvas controlled via `BACKGROUND_INTENSITY`.
 
-## Interaction and accessibility
+## Project repositories
 
-- A mobile navigation menu, visible keyboard focus, a skip link, and active section links.
-- A horizontally scrollable First Set gallery and native modal screenshot viewer.
-- Responsive images, lazy loading, and fixed image dimensions to limit layout shifts.
-- Cursor glow with an off switch and reduced-motion support.
-- Optional cursor and click audio. Sound starts muted and only initializes after a visitor enables it.
-
-## Featured source repositories
-
-- [First Set](https://github.com/vshukla0x/fit-forge-) — HTML, CSS, JavaScript, and browser local storage.
-- [Better Tech](https://github.com/vshukla0x/better-tech-) — React, TypeScript, Vite, and CSS. [Live demo](https://better-tech-chi.vercel.app/).
-
-Keep availability labels, technology lists, and personal project stories accurate when updating the page. Add a résumé link only when the corresponding PDF exists, and a contact form only with a configured destination.
+- [IET Grid](https://github.com/ThunderKhan/iet-grid) — React, Vite, Python, FastAPI, Supabase, PostgreSQL.
+- [O.A.S.I.S.](https://github.com/ThunderKhan/oasis) — Next.js, TypeScript, Tailwind CSS, Python, FastAPI, SQLite, Scikit-learn.
+- [First Set](https://github.com/vshukla0x/fit-forge-) — HTML, CSS, JavaScript, localStorage.
+- [Better Tech](https://github.com/vshukla0x/better-tech-) — React, TypeScript, Vite, CSS.

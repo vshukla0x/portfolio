@@ -1,142 +1,3906 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#14271f">
-<meta name="description" content="Vivek Shukla, a BCA student at DDU Gorakhpur, shares First Set and Better Tech prototypes, source code, and his learning in Linux, networking, and security.">
-<title>Vivek Shukla | Student Developer &amp; Tech Explorer</title>
-<meta property="og:title" content="Vivek Shukla | Student Developer &amp; Tech Explorer">
-<meta property="og:description" content="Personal project prototypes, the ideas behind them, and what I’m learning along the way.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#050505">
+<meta name="description" content="Vivek Shukla — BCA student at DDU Gorakhpur University building practical software, systems, and web projects.">
+<title>Vivek Shukla — Software &amp; Systems Portfolio</title>
+<meta property="og:title" content="Vivek Shukla — Software &amp; Systems Portfolio">
+<meta property="og:description" content="Project exhibition by Vivek Shukla: IET Grid, O.A.S.I.S., First Set, and Better Tech.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://vivekk.me/">
+<link rel="canonical" href="https://vivekk.me/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23050505'/%3E%3Cpath d='M9 10l7 13 7-13' fill='none' stroke='%23D5D5D5' stroke-width='2.4' stroke-linecap='square'/%3E%3Ccircle cx='25' cy='23' r='2' fill='%23438BFF'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles.css">
-<link rel="canonical" href="https://vivekk.me/">
-<script src="assets/script.js" defer></script>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Geist:wght@400;500&display=swap" rel="stylesheet">
+<script>
+(function(){
+  var doc = document.documentElement;
+  doc.classList.remove('no-js');
+  doc.classList.add('js-enabled');
+  try{
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var seen = sessionStorage.getItem('vk_intro_seen') === '1';
+    if(!reduced && !seen){
+      doc.classList.add('intro-pending');
+    }
+  }catch(e){}
+})();
+</script>
+<style>
+:root {
+  color-scheme: dark;
+  --bg-base: #050505;
+  --text-primary: #D5D5D5;
+  --accent: #438BFF;
+
+  --surface-1: color-mix(in srgb, var(--text-primary) 3.5%, var(--bg-base));
+  --surface-2: color-mix(in srgb, var(--text-primary) 6%, var(--bg-base));
+  --surface-curtain: #0B0B0B;
+  --text-secondary: color-mix(in srgb, var(--text-primary) 72%, var(--bg-base));
+  --text-muted: color-mix(in srgb, var(--text-primary) 60%, var(--bg-base));
+  --border-subtle: color-mix(in srgb, var(--text-primary) 11%, transparent);
+  --border-strong: color-mix(in srgb, var(--text-primary) 22%, transparent);
+  --accent-soft: color-mix(in srgb, var(--accent) 14%, var(--bg-base));
+
+  --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-display: 'Big Shoulders Display', 'Antonio', 'Oswald', Impact, sans-serif;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-curtain: cubic-bezier(0.76, 0, 0.24, 1);
+
+  --container-max: 1360px;
+  --gutter: clamp(20px, 4vw, 56px);
+  --header-h: 82px;
+  --slide-w: clamp(300px, min(68.5vw, calc(57vh * 1.6)), 1020px);
+  --slide-gap: clamp(44px, 9.2vw, 148px);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+html {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 20px);
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scrollbar-color: var(--border-strong) var(--bg-base);
+  scrollbar-width: thin;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: clamp(0.875rem, 0.85rem + 0.12vw, 0.9375rem);
+  line-height: 1.55;
+  overflow-x: clip;
+  position: relative;
+  isolation: isolate;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg-base);
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+a, button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: var(--gutter);
+  z-index: 90;
+  padding: 10px 14px;
+  background: var(--text-primary);
+  color: var(--bg-base);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 2px;
+  transform: translateY(-180%);
+  transition: transform 180ms var(--ease-out);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Fixed Background Flow Field Canvas */
+#flow-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page-shell {
+  position: relative;
+  z-index: 1;
+}
+
+.wrap {
+  width: 100%;
+  max-width: calc(var(--container-max) + var(--gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* ============================================================
+   DENNIS SNELLENBERG ENTRY CURTAIN
+============================================================ */
+.intro-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--surface-curtain);
+  color: var(--text-primary);
+  pointer-events: all;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+html.intro-pending .intro-curtain {
+  display: flex;
+}
+
+.intro-curtain.is-leaving {
+  pointer-events: none;
+  transform: translate3d(0, -114%, 0);
+  transition: transform 720ms var(--ease-curtain);
+}
+
+.intro-greeting {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-size: clamp(1.375rem, 1.15rem + 1vw, 1.75rem);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  color: var(--text-primary);
+  opacity: 0;
+  transform: translate3d(0, 8px, 0);
+  transition: opacity 220ms var(--ease-out), transform 220ms var(--ease-out);
+}
+
+.intro-greeting.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.intro-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--text-primary);
+  flex-shrink: 0;
+}
+
+.intro-curve {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: clamp(48px, 11vh, 112px);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.intro-curve svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* ============================================================
+   OLIVIER LAROSE MASKED TEXT REVEALS
+============================================================ */
+.mask-line {
+  display: block;
+  overflow: hidden;
+}
+
+.mask-inner {
+  display: block;
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
+
+html.reveal-ready .mask-inner[data-reveal],
+html.reveal-ready .mask-inner[data-scroll-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 105%, 0);
+}
+
+html.reveal-ready .mask-inner[data-reveal].is-shown,
+html.reveal-ready .mask-inner[data-scroll-reveal].is-shown {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition: transform 560ms var(--ease-out) var(--delay, 0ms),
+              opacity 420ms var(--ease-out) var(--delay, 0ms);
+}
+
+html.reveal-ready .reveal-block {
+  opacity: 0;
+  transform: translate3d(0, 14px, 0);
+}
+
+html.reveal-ready .reveal-block.is-shown {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition: transform 520ms var(--ease-out) var(--delay, 0ms),
+              opacity 460ms var(--ease-out) var(--delay, 0ms);
+}
+
+/* ============================================================
+   HEADER & ARISTIDE BENOIST SEGMENTED SCRUBBER
+============================================================ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background-color: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background-color 220ms ease, border-color 220ms ease;
+}
+
+.site-header.is-scrolled {
+  background-color: var(--bg-base);
+  border-bottom-color: var(--border-subtle);
+}
+
+.header-inner {
+  height: 76px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 16px;
+}
+
+.wordmark {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 2.7vw, 2.75rem);
+  font-weight: 800;
+  line-height: 0.86;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text-primary);
+  white-space: nowrap;
+  transition: opacity 150ms ease;
+}
+
+.header-nav {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.header-nav a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+.header-nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 6px;
+  height: 1.5px;
+  background-color: var(--text-primary);
+  transform-origin: left center;
+  transition: background-color 180ms ease, transform 240ms var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .wordmark:hover {
+    opacity: 0.85;
+  }
+  .header-nav a:hover::after {
+    background-color: var(--accent);
+  }
+}
+
+/* Segmented Scrubber Component */
+.scrubber-host {
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scrubber {
+  position: relative;
+  width: 248px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  touch-action: none;
+  cursor: ew-resize;
+}
+
+.scrubber-ticks {
+  position: relative;
+  width: 236px;
+  height: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.scrubber-tick {
+  width: 1px;
+  height: 10px;
+  background-color: color-mix(in srgb, var(--text-primary) 24%, transparent);
+  transition: background-color 180ms ease;
+}
+
+.scrubber-tick.is-stop {
+  height: 12px;
+  background-color: color-mix(in srgb, var(--text-primary) 42%, transparent);
+}
+
+.scrubber-thumb {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 2px 7px;
+  background-color: var(--bg-base);
+  transform: translate3d(0, -50%, 0);
+  pointer-events: none;
+  font-size: 0.75rem;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.scrubber-current {
+  color: var(--text-primary);
+  font-weight: 500;
+  min-width: 16px;
+  text-align: right;
+}
+
+.scrubber-box {
+  width: 22px;
+  height: 12px;
+  border: 1px solid var(--accent);
+  background-color: var(--bg-base);
+  transition: transform 160ms var(--ease-out), background-color 160ms ease;
+}
+
+.scrubber.is-dragging .scrubber-box {
+  background-color: var(--accent-soft);
+  transform: scale(0.96);
+}
+
+.scrubber-total {
+  color: var(--text-muted);
+  font-weight: 400;
+  min-width: 16px;
+}
+
+.mobile-scrubber-bar {
+  display: none;
+}
+
+/* ============================================================
+   ARISTIDE BENOIST FULL-VIEWPORT HORIZONTAL EXHIBITION
+============================================================ */
+.exhibition {
+  min-height: calc(100dvh - 76px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: clamp(8px, 2vh, 24px);
+  padding-bottom: clamp(22px, 4.2vh, 46px);
+}
+
+.exhibition-stage-wrap {
+  position: relative;
+  margin-block: auto;
+}
+
+.exhibition-title-overlay {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(var(--slide-w) * 1.045);
+  max-width: calc(100vw - 24px);
+  z-index: 6;
+  pointer-events: none;
+}
+
+.exhibition-big-title {
+  margin: 0;
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3.35rem, calc(var(--slide-w) * 0.215), 13.75rem);
+  line-height: 0.78;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #EDEDED;
+  white-space: nowrap;
+  user-select: none;
+  will-change: transform;
+}
+
+.ex-char-space {
+  display: block;
+  flex: var(--grow, 1) 1 0px;
+  min-width: 1px;
+}
+
+.ex-char-mask {
+  display: inline-block;
+  overflow: hidden;
+  padding-block: 0.02em 0.04em;
+  flex: 0 0 auto;
+}
+
+.ex-char {
+  display: inline-block;
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+  transition: transform 560ms var(--ease-curtain) var(--char-delay, 0ms),
+              opacity 360ms var(--ease-out) var(--char-delay, 0ms);
+}
+
+.ex-char.is-entering {
+  opacity: 0;
+  transform: translate3d(-108%, 0, 0);
+  transition: none;
+}
+
+/* Initial Minimized Project Strip (click any project to scale bigger) */
+.minimized-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 26px);
+  width: 100%;
+  max-width: 1060px;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  transition: opacity 240ms var(--ease-out), transform 360ms var(--ease-out);
+}
+
+.exhibition.is-expanded .minimized-grid,
+html.no-js .minimized-grid {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%) scale(0.95);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.mini-card {
+  display: block;
+  width: 100%;
+  text-align: left;
+  opacity: 0.56;
+  transition: opacity 240ms ease, transform 340ms var(--ease-out);
+}
+
+.mini-card-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background-color: var(--surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: 1px;
+  transition: border-color 220ms ease;
+}
+
+.mini-card-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transform: scale(1.01);
+  transition: transform 420ms var(--ease-out);
+  pointer-events: none;
+}
+
+.mini-card-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 9px;
+  font-size: 0.6875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+}
+
+.mini-card-label {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 7px;
+  min-width: 0;
+  color: var(--text-primary);
+}
+
+.mini-card-index {
+  color: var(--text-muted);
+  transition: color 180ms ease;
+}
+
+.mini-card-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mini-card-plus {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  transition: color 180ms ease, transform 240ms var(--ease-out);
+}
+
+.mini-card:focus-visible {
+  opacity: 1;
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .mini-card:hover,
+  .mini-card.is-highlighted {
+    opacity: 1;
+  }
+  .mini-card:hover .mini-card-frame,
+  .mini-card.is-highlighted .mini-card-frame {
+    border-color: var(--border-strong);
+  }
+  .mini-card:hover .mini-card-frame img {
+    transform: scale(1.05);
+  }
+  .mini-card:hover .mini-card-index,
+  .mini-card.is-highlighted .mini-card-index {
+    color: var(--accent);
+  }
+  .mini-card:hover .mini-card-plus {
+    color: var(--accent);
+    transform: rotate(90deg);
+  }
+}
+
+.exhibition-expanded-view {
+  position: relative;
+}
+
+.exhibition:not(.is-expanded) .exhibition-expanded-view {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.exhibition-stage {
+  position: relative;
+  width: 100%;
+  padding-top: calc(clamp(3.35rem, calc(var(--slide-w) * 0.215), 13.75rem) * 0.54);
+  overflow: hidden;
+  touch-action: pan-y;
+  cursor: grab;
+}
+
+.exhibition-stage:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+.exhibition-stage.is-dragging {
+  cursor: grabbing;
+}
+
+.exhibition-track {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--slide-gap);
+  will-change: transform;
+  padding-inline: 0;
+}
+
+html.no-js .exhibition-expanded-view {
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: none;
+}
+
+html.no-js .exhibition-stage {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-inline: max(var(--gutter), calc((100% - var(--slide-w)) / 2));
+}
+
+html.no-js .exhibition-slide {
+  scroll-snap-align: center;
+  opacity: 1;
+}
+
+.exhibition-slide {
+  flex: 0 0 var(--slide-w);
+  width: var(--slide-w);
+  min-width: 0;
+  opacity: 0.22;
+  transition: opacity 360ms var(--ease-out);
+  user-select: none;
+}
+
+.exhibition.is-animating-expand .exhibition-slide:not(.is-active) {
+  opacity: 0;
+}
+
+.exhibition-slide.is-active {
+  opacity: 1;
+}
+
+.slide-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background-color: var(--surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: 1px;
+  will-change: transform;
+}
+
+.slide-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 26%;
+  background: linear-gradient(180deg, rgba(5, 5, 5, 0.72) 0%, rgba(5, 5, 5, 0.28) 58%, rgba(5, 5, 5, 0) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.slide-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transform: scale(1.035) translate3d(0, 0, 0);
+  will-change: transform;
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+
+.slide-trigger {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: transparent;
+}
+
+.slide-trigger:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+/* Lower Exhibition Strip (Aristide Corners + Center EXPLORE | +) */
+.exhibition-meta-bar {
+  margin-top: clamp(16px, 2.4vh, 28px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: end;
+  gap: 16px 24px;
+}
+
+.exhibition-corner-left {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.meta-kicker {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 0.6875rem;
+  line-height: 1.35;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.meta-index {
+  color: var(--accent);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.project-caption {
+  margin: 0;
+  font-size: 0.6875rem;
+  line-height: 1.35;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.exhibition-mini-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  transition: opacity 240ms var(--ease-out);
+}
+
+.exhibition:not(.is-expanded) .exhibition-mini-nav {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.mini-link,
+.mini-action-btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  margin-left: 4px;
+  padding-inline: 4px;
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text-muted);
+  transition: color 150ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .mini-link:hover,
+  .mini-action-btn:hover {
+    color: var(--text-primary);
+  }
+}
+
+.explore-center-wrap {
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: opacity 380ms var(--ease-out) 200ms, transform 420ms var(--ease-out) 200ms;
+}
+
+.exhibition:not(.is-expanded) .explore-center-wrap,
+.exhibition.is-animating-expand .explore-center-wrap {
+  opacity: 0;
+  transform: translate3d(0, 12px, 0);
+  pointer-events: none;
+  transition: opacity 140ms ease, transform 160ms ease;
+}
+
+.explore-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 84px;
+  padding: 6px 12px 2px;
+  color: var(--text-primary);
+  transition: transform 150ms var(--ease-out), color 150ms ease;
+}
+
+.explore-word {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 4px;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.explore-word::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1.5px;
+  background-color: var(--text-primary);
+  transition: background-color 180ms ease, transform 220ms var(--ease-out);
+}
+
+.explore-stem {
+  width: 1px;
+  height: clamp(22px, 3.2vh, 34px);
+  margin: 9px 0 8px;
+  background-color: color-mix(in srgb, var(--text-primary) 55%, transparent);
+  transition: background-color 180ms ease;
+}
+
+.explore-plus {
+  display: block;
+  width: 13px;
+  height: 13px;
+  color: var(--text-primary);
+  transition: color 180ms ease, transform 240ms var(--ease-out);
+}
+
+.explore-btn:active {
+  transform: scale(0.97);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .explore-btn:hover .explore-word::after {
+    background-color: var(--accent);
+  }
+  .explore-btn:hover .explore-stem {
+    background-color: var(--accent);
+  }
+  .explore-btn:hover .explore-plus {
+    color: var(--accent);
+    transform: rotate(90deg);
+  }
+}
+
+.meta-actions {
+  justify-self: end;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0;
+}
+
+.corner-contact-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.corner-contact-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 20px;
+  padding-left: 16px;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: color 160ms ease;
+}
+
+.corner-contact-link::before {
+  content: '↗';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  font-size: 0.6875rem;
+  color: var(--accent);
+  opacity: 0;
+  transform: translate3d(-4px, -46%, 0);
+  transition: opacity 200ms var(--ease-out), transform 220ms var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .corner-contact-link:hover {
+    color: var(--text-primary);
+  }
+  .corner-contact-link:hover::before {
+    opacity: 1;
+    transform: translate3d(0, -50%, 0);
+  }
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 2px;
+  color: var(--text-secondary);
+  background-color: transparent;
+  transition: border-color 150ms ease, color 150ms ease, transform 140ms var(--ease-out);
+}
+
+.icon-btn:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+.icon-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .icon-btn:hover:not(:disabled) {
+    border-color: var(--border-strong);
+    color: var(--text-primary);
+  }
+}
+
+/* ============================================================
+   EDITORIAL SECTIONS: ACHIEVEMENTS, ABOUT, CONTACT
+============================================================ */
+.section-band {
+  border-top: 1px solid var(--border-subtle);
+  padding-block: clamp(44px, 6vw, 76px);
+}
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: clamp(24px, 3vw, 36px);
+}
+
+.section-heading {
+  margin: 0;
+  font-size: clamp(1.25rem, 1.15rem + 0.35vw, 1.5rem);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--text-primary);
+}
+
+.section-note {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* Hackathons & Achievements List */
+.ledger {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.ledger-row {
+  display: grid;
+  grid-template-columns: minmax(140px, 0.9fr) minmax(0, 1.4fr) minmax(0, 1.1fr);
+  gap: 12px 32px;
+  padding-block: 22px;
+  border-bottom: 1px solid var(--border-subtle);
+  align-items: start;
+}
+
+.ledger-org {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.ledger-org strong {
+  display: block;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 2px;
+}
+
+.ledger-event {
+  min-width: 0;
+}
+
+.ledger-title {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.ledger-result {
+  margin: 4px 0 0;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.ledger-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+}
+
+.ledger-meta span {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+/* About Section */
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.35fr);
+  gap: 28px 56px;
+  align-items: start;
+}
+
+.education-block {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.education-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin: 0 0 6px;
+}
+
+.education-school {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.education-degree {
+  margin: 3px 0 0;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.education-period {
+  margin: 4px 0 0;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.about-body {
+  margin: 0;
+  font-size: clamp(0.875rem, 0.85rem + 0.12vw, 0.9375rem);
+  line-height: 1.65;
+  color: var(--text-primary);
+  max-width: 64ch;
+  text-wrap: pretty;
+}
+
+.focus-list {
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.focus-item {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.42fr) minmax(0, 1fr);
+  gap: 8px 24px;
+  padding-block: 14px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.focus-term {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.focus-desc {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+/* Contact & Interactive Channel Previews */
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.15fr);
+  gap: 28px 56px;
+  align-items: start;
+}
+
+.contact-copy {
+  margin: 10px 0 0;
+  font-size: clamp(0.875rem, 0.85rem + 0.12vw, 0.9375rem);
+  color: var(--text-secondary);
+  max-width: 44ch;
+}
+
+.contact-stage-preview {
+  margin-top: 24px;
+  max-width: 430px;
+  background-color: var(--surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.contact-preview-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 13px;
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.contact-preview-bar strong {
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.contact-preview-viewport {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background-color: var(--bg-base);
+  overflow: hidden;
+}
+
+.contact-preview-pane {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate3d(0, 10px, 0) scale(1.025);
+  transition: opacity 280ms var(--ease-out),
+              transform 380ms var(--ease-out),
+              visibility 0s linear 280ms;
+}
+
+.contact-preview-pane.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: translate3d(0, 0, 0) scale(1);
+  transition: opacity 280ms var(--ease-out),
+              transform 380ms var(--ease-out),
+              visibility 0s linear 0s;
+}
+
+.contact-preview-pane img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+}
+
+.contact-card-sheet {
+  height: 100%;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--bg-base);
+}
+
+.sheet-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.sheet-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent);
+}
+
+.sheet-main {
+  min-width: 0;
+}
+
+.sheet-kicker {
+  margin: 0 0 4px;
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.sheet-title {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  overflow-wrap: anywhere;
+}
+
+.sheet-sub {
+  margin: 5px 0 0;
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+.sheet-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+}
+
+.contact-channels {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.contact-channel {
+  position: relative;
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px 18px;
+  padding-block: 18px;
+  border-bottom: 1px solid var(--border-subtle);
+  transition: border-color 180ms ease;
+}
+
+.contact-channel::before {
+  content: '';
+  position: absolute;
+  left: -12px;
+  top: 22%;
+  bottom: 22%;
+  width: 2px;
+  background-color: var(--accent);
+  transform: scaleY(0);
+  transform-origin: center;
+  transition: transform 220ms var(--ease-out);
+}
+
+.contact-channel.is-selected::before {
+  transform: scaleY(1);
+}
+
+.channel-index {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+  transition: color 180ms ease;
+}
+
+.contact-channel.is-selected .channel-index {
+  color: var(--accent);
+}
+
+.channel-info {
+  min-width: 0;
+}
+
+.channel-label {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+
+.email-link,
+.channel-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  transition: color 150ms ease;
+}
+
+.channel-arrow {
+  display: inline-block;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  transition: transform 200ms var(--ease-out), color 150ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .email-link:hover,
+  .channel-link:hover {
+    color: var(--accent);
+  }
+  .contact-channel:hover .channel-arrow,
+  .contact-channel.is-selected .channel-arrow {
+    color: var(--accent);
+    transform: translate3d(3px, -3px, 0);
+  }
+}
+
+.channel-side {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 96px;
+  min-height: 36px;
+  padding: 6px 12px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 2px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background-color: var(--surface-1);
+  transition: border-color 150ms ease, color 150ms ease, transform 140ms var(--ease-out);
+}
+
+.copy-btn:active {
+  transform: scale(0.97);
+}
+
+.copy-btn.is-copied {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .copy-btn:hover {
+    border-color: var(--border-strong);
+    color: var(--text-primary);
+  }
+}
+
+/* Floating Animated Contact Link Popover (Top Bar Hover / Focus Preview) */
+.contact-popover {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 288px;
+  z-index: 85;
+  pointer-events: none;
+  background-color: var(--surface-1);
+  border: 1px solid var(--border-strong);
+  border-radius: 2px;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate3d(var(--tx, 0px), calc(var(--ty, 0px) + var(--dy, 8px)), 0) scale(0.96);
+  transition: opacity 200ms var(--ease-out),
+              transform 280ms var(--ease-out),
+              visibility 0s linear 200ms;
+  will-change: transform, opacity;
+}
+
+.contact-popover.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translate3d(var(--tx, 0px), var(--ty, 0px), 0) scale(1);
+  transition: opacity 220ms var(--ease-out),
+              transform 300ms var(--ease-out),
+              visibility 0s linear 0s;
+}
+
+.contact-popover-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 11px;
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.contact-popover-head strong {
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.contact-popover-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background-color: var(--bg-base);
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.contact-popover-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+  transform: scale(1.06);
+  transition: transform 460ms var(--ease-out);
+}
+
+.contact-popover.is-visible .contact-popover-media img {
+  transform: scale(1);
+}
+
+.contact-popover-foot {
+  padding: 8px 11px;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.footer-base {
+  margin-top: clamp(32px, 4vw, 48px);
+  padding-top: 20px;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  flex-wrap: wrap;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   ACCESSIBLE PROJECT DETAIL OVERLAY (<dialog>)
+============================================================ */
+.project-dialog {
+  margin: auto;
+  padding: 0;
+  width: min(880px, calc(100vw - 24px));
+  max-height: min(90dvh, 840px);
+  background-color: var(--surface-1);
+  color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  overflow: hidden;
+  opacity: 0;
+  transform: scale(0.98) translate3d(0, 6px, 0);
+}
+
+.project-dialog[open] {
+  display: flex;
+  flex-direction: column;
+  opacity: 1;
+  transform: scale(1) translate3d(0, 0, 0);
+  transition: opacity 220ms var(--ease-out), transform 260ms var(--ease-out);
+}
+
+@starting-style {
+  .project-dialog[open] {
+    opacity: 0;
+    transform: scale(0.98) translate3d(0, 6px, 0);
+  }
+}
+
+.project-dialog::backdrop {
+  background-color: rgba(5, 5, 5, 0.84);
+}
+
+.dialog-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border-subtle);
+  background-color: var(--surface-1);
+  flex-shrink: 0;
+}
+
+.dialog-kicker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.dialog-kicker strong {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.dialog-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding-inline: 10px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 2px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: border-color 150ms ease, color 150ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .dialog-close:hover {
+    border-color: var(--border-strong);
+    color: var(--text-primary);
+  }
+}
+
+.dialog-body {
+  padding: 24px;
+  overflow-y: auto;
+  display: grid;
+  gap: 22px;
+}
+
+.dialog-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px 24px;
+  flex-wrap: wrap;
+}
+
+.dialog-title {
+  margin: 0;
+  font-size: clamp(1.3125rem, 1.15rem + 0.55vw, 1.75rem);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--text-primary);
+}
+
+.dialog-subtitle {
+  margin: 4px 0 0;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.dialog-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.dialog-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 8px 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: 2px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text-primary);
+  background-color: transparent;
+  transition: border-color 150ms ease, background-color 150ms ease, transform 140ms var(--ease-out);
+}
+
+.dialog-btn.is-primary {
+  border-color: var(--accent);
+  background-color: var(--accent);
+  color: var(--bg-base);
+}
+
+.dialog-btn:active {
+  transform: scale(0.97);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .dialog-btn:not(.is-primary):hover {
+    border-color: var(--text-primary);
+    background-color: var(--surface-2);
+  }
+  .dialog-btn.is-primary:hover {
+    opacity: 0.92;
+  }
+}
+
+.dialog-media-wrap {
+  display: grid;
+  gap: 10px;
+}
+
+.dialog-figure {
+  margin: 0;
+  aspect-ratio: 16 / 10;
+  max-height: min(44vh, 420px);
+  background-color: var(--bg-base);
+  border: 1px solid var(--border-subtle);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.dialog-figure img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.dialog-tabs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.dialog-tab {
+  min-height: 36px;
+  padding: 6px 12px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 2px;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  transition: border-color 150ms ease, color 150ms ease, background-color 150ms ease;
+}
+
+.dialog-tab[aria-pressed="true"] {
+  border-color: var(--accent);
+  color: var(--text-primary);
+  background-color: var(--accent-soft);
+}
+
+.dialog-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 28px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.detail-block {
+  min-width: 0;
+}
+
+.detail-block h3 {
+  margin: 0 0 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.detail-block p,
+.detail-block ul {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+.detail-block ul {
+  padding-left: 16px;
+  display: grid;
+  gap: 5px;
+}
+
+.detail-block.is-wide {
+  grid-column: 1 / -1;
+}
+
+.stack-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.stack-list li {
+  padding: 4px 9px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 2px;
+  font-size: 0.75rem;
+  color: var(--text-primary);
+  background-color: var(--bg-base);
+}
+
+/* ============================================================
+   RESPONSIVE BREAKPOINTS (360px -> 1920px+)
+============================================================ */
+@media (max-width: 820px) {
+  .ledger-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .about-grid,
+  .contact-grid,
+  .dialog-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --slide-w: calc(100vw - 44px);
+    --slide-gap: 14px;
+  }
+
+  .header-inner {
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+  }
+
+  .scrubber-host {
+    display: none;
+  }
+
+  .exhibition.is-expanded .mobile-scrubber-bar {
+    display: flex;
+    justify-content: center;
+    padding-top: 8px;
+  }
+
+  .mobile-scrubber-bar .scrubber {
+    width: 224px;
+  }
+
+  .mobile-scrubber-bar .scrubber-ticks {
+    width: 212px;
+  }
+
+  .minimized-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px 12px;
+    padding-block: 12px;
+  }
+
+  .mini-card {
+    opacity: 0.92;
+  }
+
+  .exhibition {
+    min-height: calc(100dvh - 76px);
+    padding-top: 12px;
+    padding-bottom: 32px;
+  }
+
+  .exhibition-title-overlay {
+    width: calc(var(--slide-w) * 1.03);
+  }
+
+  .exhibition-meta-bar {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto auto;
+    align-items: end;
+    gap: 14px 16px;
+  }
+
+  .explore-center-wrap {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .exhibition:not(.is-expanded) .explore-center-wrap {
+    display: none;
+  }
+
+  .explore-stem {
+    height: 18px;
+    margin: 6px 0 5px;
+  }
+
+  .exhibition-corner-left {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .project-caption {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+  }
+
+  .meta-actions {
+    grid-column: 2;
+    grid-row: 2;
+    align-items: flex-end;
+  }
+
+  .corner-contact-link {
+    min-height: 28px;
+    padding-left: 0;
+  }
+
+  .corner-contact-link::before {
+    display: none;
+  }
+
+  .focus-item {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .contact-stage-preview {
+    max-width: none;
+  }
+
+  .contact-channel::before {
+    left: 0;
+  }
+
+  .dialog-body {
+    padding: 18px;
+  }
+}
+
+@media (max-width: 540px) {
+  .contact-channel {
+    grid-template-columns: 26px minmax(0, 1fr);
+  }
+  .channel-side {
+    grid-column: 2;
+    justify-self: start;
+  }
+}
+
+@media (max-width: 420px) {
+  .header-nav {
+    gap: 16px;
+  }
+}
+
+/* ============================================================
+   REDUCED MOTION ACCESSIBILITY
+============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .intro-curtain {
+    display: none !important;
+  }
+
+  html.reveal-ready .mask-inner[data-reveal],
+  html.reveal-ready .mask-inner[data-scroll-reveal],
+  html.reveal-ready .reveal-block {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .ex-char,
+  .ex-char.is-entering {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .exhibition-slide {
+    transition: opacity 150ms ease;
+  }
+
+  .minimized-grid,
+  .mini-card,
+  .mini-card-frame,
+  .mini-card-frame img,
+  .mini-card-index,
+  .mini-card-plus,
+  .slide-frame,
+  .explore-center-wrap,
+  .exhibition-mini-nav,
+  .contact-preview-pane,
+  .contact-popover,
+  .contact-popover-media img,
+  .contact-channel::before,
+  .channel-arrow,
+  .corner-contact-link::before,
+  .project-dialog[open],
+  .explore-btn,
+  .explore-word::after,
+  .explore-stem,
+  .explore-plus,
+  .scrubber-box,
+  .icon-btn,
+  .copy-btn,
+  .dialog-btn {
+    transition: none;
+    animation: none;
+  }
+
+  .contact-preview-pane.is-active,
+  .contact-popover.is-visible {
+    transform: none;
+  }
+}
+</style>
 </head>
 <body>
-<a class="skip-link" href="#work">Skip to projects</a><div class="glow-viewport" aria-hidden="true">
-<div class="spotlight" aria-hidden="true"></div>
-</div>
-<nav aria-label="Main navigation"><div class="shell nav-in">
-<a class="brand" href="#top">vivek<span style="color:var(--gold)">.</span>shukla<i aria-hidden="true" class="mark"></i></a><div class="nav-controls">
-<div class="nav-links">
-<a href="#work">Projects</a><a href="#skills">Skills</a><a href="#about">About</a><a href="#contact">Contact</a>
-</div>
-<button id="sound-toggle" class="sound-toggle" type="button" aria-label="Interface sound" aria-pressed="false" title="Enable cursor and click sounds">Sound off</button><details class="mobile-menu"><summary aria-label="Toggle navigation menu"><span class="menu-bars" aria-hidden="true"><i></i><i></i></span><span>Menu</span></summary><div class="mobile-panel">
-<a href="#work">Projects </a><a href="#skills">Skills </a><a href="#about">About </a><a href="#contact">Contact </a>
-</div></details>
-</div>
-</div></nav>
-<header class="shell opening" id="top"><div class="identity">
-<p class="kicker">BCA student · Gorakhpur, India</p>
-<h1>Vivek<br><em>Shukla.</em>
-</h1>
-<p class="bio">I’m a BCA student exploring Linux, networking, and security through projects like a beginner’s fitness app and a guide to choosing an operating system.</p>
-<div class="actions">
-<a class="push" href="#work">View projects <svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 4v15m-6-6 6 6 6-6"></path></svg></a><a class="github" href="https://github.com/vshukla0x">GitHub</a>
-</div>
-</div>
-<a class="feature" href="#fitforge" aria-label="Explore First Set and its workout screens"><div class="art">
-<strong>First Set</strong><div class="devices">
-<img class="device back" src="assets/fitforge-home.webp" alt="" width="390" height="844" decoding="async" loading="eager"><img class="device front" src="assets/fitforge-workout.webp" alt="First Set workout logging screen" width="390" height="844" decoding="async" loading="eager" fetchpriority="high">
-</div>
-</div>
-<div class="feature-cap">
-<span>First Set</span><small>Fitness app prototype</small>
-</div></a></header>
-<main id="work"><div class="shell"><h2 class="selected">Selected projects</h2></div>
-<section class="project shell" id="fitforge" aria-labelledby="ff-title"><div class="project-head">
-<h3 id="ff-title">First Set</h3>
-<span class="mono project-index">Fitness &amp; learning</span>
-</div>
-<div class="project-description">
-<p class="lead">Starting at the gym comes with a lot of questions. First Set is my attempt to bring the basics into one place.</p>
-<div><p class="right">A personal fitness app prototype shaped by the questions I had about nutrition, micronutrients, and exercise form.</p></div>
-</div>
-<div class="project-meta">
-  <ul class="stack" aria-label="First Set technology stack"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>localStorage</li></ul>
-  <div class="project-links"><a class="source-link demo-link" href="https://first-set-tau.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Open First Set live demo (opens in a new tab)">Live demo <span aria-hidden="true">↗</span></a><a class="source-link" href="https://github.com/vshukla0x/fit-forge-" target="_blank" rel="noopener noreferrer" aria-label="View First Set source code on GitHub (opens in a new tab)">Source code <span aria-hidden="true">↗</span></a></div>
-</div>
-<div class="ff-stage">
-<div class="phone-grid" aria-label="First Set screenshots. Swipe or use the arrow keys to explore, then select a screen to enlarge it." role="region" tabindex="0">
-<button class="phone" type="button" data-image="img-ff-workout" data-caption="First Set / Workout logging" aria-label="Expand First Set workout screen"><img id="img-ff-workout" src="assets/fitforge-workout.webp" alt="First Set workout tracking screen with sets, weights and reps" loading="lazy" width="390" height="844" decoding="async"></button>
-<button class="phone" type="button" data-image="img-ff-home" data-caption="First Set / Home dashboard" aria-label="Expand First Set home dashboard"><img id="img-ff-home" src="assets/fitforge-home.webp" alt="First Set daily overview dashboard showing hydration and training plan" loading="lazy" width="390" height="844" decoding="async"></button>
+<a class="skip-link" href="#work">Skip to projects</a>
 
-<button class="phone" type="button" data-image="img-ff-nutrition" data-caption="First Set / Nutrition" aria-label="Expand First Set nutrition screen"><img id="img-ff-nutrition" src="assets/fitforge-nutrition.webp" alt="First Set nutrition view displaying calorie and macro targets" loading="lazy" width="390" height="844" decoding="async"></button>
-<button class="phone" type="button" data-image="img-ff-progress" data-caption="First Set / Progress" aria-label="Expand First Set progress screen"><img id="img-ff-progress" src="assets/fitforge-progress.webp" alt="First Set progress and personal records page" loading="lazy" width="390" height="844" decoding="async"></button>
-</div>
-<div class="shot-caption">
-<span>App screenshots</span><span>Tap to enlarge</span><span class="swipe-hint">Swipe to explore</span>
-</div>
-</div>
-<dl class="project-story">
-  <div><dt>Why I started</dt><dd>As a beginner, I had to piece together advice about diet, workouts, and form. I wanted an app that made those basics easier to understand.</dd></div>
-  <div><dt>What I’m exploring</dt><dd>A place to log training and learn about nutrition, micronutrients, and exercise technique alongside it.</dd></div>
-  <div><dt>Where it stands</dt><dd>I’m developing the prototype. The screenshots show the workout logger, nutrition targets, and progress views.</dd></div>
-</dl></section>
-<section class="project shell" id="better-tech" aria-labelledby="bt-title"><div class="project-head">
-<h3 id="bt-title">Better Tech</h3>
-<span class="mono project-index">Operating systems</span>
-</div>
-<div class="project-description">
-<p class="lead">Better Tech helps you compare operating systems based on the apps you use and what you need your computer to do.</p>
-<div><p class="right">An OS guide prototype for people discovering Linux, comparing distributions, and checking whether their everyday apps will work before switching.</p></div>
-</div>
-<div class="project-meta">
-  <ul class="stack" aria-label="Better Tech technology stack"><li>React</li><li>TypeScript</li><li>Vite</li><li>CSS</li></ul>
-  <div class="project-links">
-    <a class="source-link demo-link" href="https://better-tech-chi.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Open Better Tech live demo (opens in a new tab)">Live demo <span aria-hidden="true">↗</span></a>
-    <a class="source-link" href="https://github.com/vshukla0x/better-tech-" target="_blank" rel="noopener noreferrer" aria-label="View Better Tech source code on GitHub (opens in a new tab)">Source code <span aria-hidden="true">↗</span></a>
+<!-- Fixed Subtle Topographic Flow-Field Canvas -->
+<canvas id="flow-canvas" aria-hidden="true"></canvas>
+
+<!-- Dennis Snellenberg-Inspired Entry Curtain -->
+<div class="intro-curtain" id="intro-curtain" aria-hidden="true">
+  <div class="intro-greeting" id="intro-greeting">
+    <span class="intro-dot" aria-hidden="true"></span>
+    <span id="intro-word">Hello</span>
+  </div>
+  <div class="intro-curve" aria-hidden="true">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+      <path id="intro-curve-path" d="M0,0 L1440,0 L1440,12 Q720,120 0,12 Z" fill="#0B0B0B"></path>
+    </svg>
   </div>
 </div>
-<div class="bt-stage">
-<button type="button" class="bt-image" id="bt-preview" aria-label="Expand Better Tech homepage screenshot"><img id="img-bt-home" src="assets/better-tech-home.webp" alt="Better Tech website homepage showing OS finder introduction" loading="lazy" width="1920" height="1080" decoding="async" srcset="assets/better-tech-home-960.webp 960w, assets/better-tech-home.webp 1920w" sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 820px) calc(100vw - 80px), 850px"><img id="img-bt-result" src="assets/better-tech-result.webp" alt="Better Tech operating system recommendation results screen" loading="lazy" hidden width="1920" height="1035" decoding="async" srcset="assets/better-tech-result-960.webp 960w, assets/better-tech-result.webp 1920w" sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 820px) calc(100vw - 80px), 850px"></button><div class="bt-note">
-<span class="mono">A look inside</span><h4 id="bt-label">Find your fit.</h4>
-<p>From your setup to a shortlist that explains itself.</p>
-<div class="bt-switch" role="group" aria-label="Choose Better Tech preview">
-<button type="button" data-bt="home" aria-pressed="true">Homepage</button><button type="button" data-bt="result" aria-pressed="false">Sample result</button>
+
+<div class="page-shell" id="top">
+  <!-- Minimal Exhibition Navigation & Top Center Scrubber -->
+  <header class="site-header" id="site-header">
+    <div class="wrap header-inner">
+      <a class="wordmark" href="#top" aria-label="Vivek Shukla — Home">VIVEK</a>
+
+      <div class="scrubber-host">
+        <div
+          class="scrubber"
+          id="scrubber-desktop"
+          role="slider"
+          tabindex="0"
+          aria-label="Project exhibition navigation"
+          aria-valuemin="1"
+          aria-valuemax="4"
+          aria-valuenow="1"
+          aria-valuetext="Project 1 of 4: First Set"
+        >
+          <div class="scrubber-ticks" aria-hidden="true"></div>
+          <div class="scrubber-thumb" aria-hidden="true">
+            <span class="scrubber-current">01</span>
+            <span class="scrubber-box"></span>
+            <span class="scrubber-total">04</span>
+          </div>
+        </div>
+      </div>
+
+      <nav class="header-nav" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h1 class="visually-hidden">Vivek Shukla — BCA Student exploring software, systems and technology</h1>
+
+    <!-- Aristide Benoist Full-Viewport Horizontal Project Exhibition -->
+    <section class="exhibition" id="work" aria-label="Project exhibition">
+      <div class="exhibition-stage-wrap">
+        <div class="minimized-grid" id="minimized-grid" aria-label="Minimized project index">
+          <button type="button" class="mini-card" data-expand-index="0" aria-label="Expand First Set exhibition preview">
+            <div class="mini-card-frame">
+              <img src="assets/first-set-showcase.webp" alt="First Set fitness web application preview" width="1440" height="900" loading="eager" decoding="async">
+            </div>
+            <div class="mini-card-meta">
+              <span class="mini-card-label">
+                <span class="mini-card-index">01</span>
+                <span class="mini-card-name">First Set</span>
+              </span>
+              <span class="mini-card-plus" aria-hidden="true">+</span>
+            </div>
+          </button>
+
+          <button type="button" class="mini-card" data-expand-index="1" aria-label="Expand O.A.S.I.S. exhibition preview">
+            <div class="mini-card-frame">
+              <img src="assets/oasis-home.webp" alt="O.A.S.I.S. oncology screening platform preview" width="1440" height="900" loading="eager" decoding="async">
+            </div>
+            <div class="mini-card-meta">
+              <span class="mini-card-label">
+                <span class="mini-card-index">02</span>
+                <span class="mini-card-name">O.A.S.I.S.</span>
+              </span>
+              <span class="mini-card-plus" aria-hidden="true">+</span>
+            </div>
+          </button>
+
+          <button type="button" class="mini-card" data-expand-index="2" aria-label="Expand Better Tech exhibition preview">
+            <div class="mini-card-frame">
+              <img src="assets/better-tech-home.webp" alt="Better Tech operating system recommendation preview" width="1440" height="900" loading="eager" decoding="async">
+            </div>
+            <div class="mini-card-meta">
+              <span class="mini-card-label">
+                <span class="mini-card-index">03</span>
+                <span class="mini-card-name">Better Tech</span>
+              </span>
+              <span class="mini-card-plus" aria-hidden="true">+</span>
+            </div>
+          </button>
+
+          <button type="button" class="mini-card" data-expand-index="3" aria-label="Expand IET Grid exhibition preview">
+            <div class="mini-card-frame">
+              <img src="assets/iet-grid.webp" alt="IET Grid campus scheduling platform preview" width="1440" height="900" loading="eager" decoding="async">
+            </div>
+            <div class="mini-card-meta">
+              <span class="mini-card-label">
+                <span class="mini-card-index">04</span>
+                <span class="mini-card-name">IET Grid</span>
+              </span>
+              <span class="mini-card-plus" aria-hidden="true">+</span>
+            </div>
+          </button>
+        </div>
+
+        <div class="exhibition-expanded-view" id="exhibition-expanded-view">
+          <div class="exhibition-title-overlay">
+            <h2 class="exhibition-big-title" id="active-title" aria-label="First Set" data-rendered-id="01"><span class="ex-char-mask" aria-hidden="true"><span class="ex-char">F</span></span><span class="ex-char-space" style="--grow:0.03" aria-hidden="true"></span><span class="ex-char-mask" aria-hidden="true"><span class="ex-char">I</span></span><span class="ex-char-space" style="--grow:0.03" aria-hidden="true"></span><span class="ex-char-mask" aria-hidden="true"><span class="ex-char">R</span></span><span class="ex-char-space" style="--grow:1.4" aria-hidden="true"></span><span class="ex-char-mask" aria-hidden="true"><span class="ex-char">S</span></span><span class="ex-char-space" style="--grow:1.4" aria-hidden="true"></span><span class="ex-char-mask" aria-hidden="true"><span class="ex-char">T</span></span><span class="ex-char-space" style="--grow:2.4" aria-hidden="true"></span><span class="ex-char-mask" aria-hidden="true"><span class="ex-char">S</span></span><span class="ex-char-space" style="--grow:0.03" aria-hidden="true"></span><span class="ex-char-mask" aria-hidden="true"><span class="ex-char">E</span></span><span class="ex-char-space" style="--grow:1.1" aria-hidden="true"></span><span class="ex-char-mask" aria-hidden="true"><span class="ex-char">T</span></span></h2>
+          </div>
+
+          <div
+            class="exhibition-stage"
+            id="exhibition-stage"
+            tabindex="0"
+            role="region"
+            aria-roledescription="carousel"
+            aria-label="Featured projects horizontal exhibition"
+          >
+            <div class="exhibition-track" id="exhibition-track">
+              <article class="exhibition-slide is-active" data-index="0">
+                <div class="slide-frame">
+                  <img src="assets/first-set-showcase.webp" alt="First Set fitness web application screens showing daily dashboard, workout set logger, and nutrition macro targets" width="1440" height="900" loading="eager" fetchpriority="high" decoding="async">
+                  <button class="slide-trigger" type="button" data-open-project="0" aria-label="Open project details for First Set"></button>
+                </div>
+              </article>
+
+              <article class="exhibition-slide" data-index="1">
+                <div class="slide-frame">
+                  <img src="assets/oasis-home.webp" alt="O.A.S.I.S. oncology screening support interface displaying oral, breast, and cervical clinical pathways" width="1440" height="900" loading="eager" decoding="async">
+                  <button class="slide-trigger" type="button" data-open-project="1" aria-label="Open project details for O.A.S.I.S."></button>
+                </div>
+              </article>
+
+              <article class="exhibition-slide" data-index="2">
+                <div class="slide-frame">
+                  <img src="assets/better-tech-home.webp" alt="Better Tech operating system recommendation homepage featuring Windows, macOS, and Linux comparison" width="1440" height="900" loading="eager" decoding="async">
+                  <button class="slide-trigger" type="button" data-open-project="2" aria-label="Open project details for Better Tech"></button>
+                </div>
+              </article>
+
+              <article class="exhibition-slide" data-index="3">
+                <div class="slide-frame">
+                  <img src="assets/iet-grid.webp" alt="IET Grid login and campus workspace entry screen showing IET DDUGU branding" width="1440" height="900" loading="eager" decoding="async">
+                  <button class="slide-trigger" type="button" data-open-project="3" aria-label="Open project details for IET Grid"></button>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Scrubber -->
+      <div class="mobile-scrubber-bar">
+        <div
+          class="scrubber"
+          id="scrubber-mobile"
+          role="slider"
+          tabindex="0"
+          aria-label="Project exhibition navigation"
+          aria-valuemin="1"
+          aria-valuemax="4"
+          aria-valuenow="1"
+          aria-valuetext="Project 1 of 4: First Set"
+        >
+          <div class="scrubber-ticks" aria-hidden="true"></div>
+          <div class="scrubber-thumb" aria-hidden="true">
+            <span class="scrubber-current">01</span>
+            <span class="scrubber-box"></span>
+            <span class="scrubber-total">04</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lower Exhibition Strip: Left Project Meta & Controls | Center EXPLORE + | Right Contact Stack -->
+      <div class="wrap">
+        <div class="exhibition-meta-bar">
+          <div class="exhibition-corner-left">
+            <div class="meta-kicker">
+              <span class="meta-index" id="active-index">01</span>
+              <span id="active-category">Select a project</span>
+            </div>
+            <p class="project-caption" id="active-caption">Click any preview to expand</p>
+            <div class="exhibition-mini-nav">
+              <div class="nav-arrows" role="group" aria-label="Previous or next project">
+                <button type="button" class="icon-btn" id="prev-project" aria-label="Previous project">
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                    <path d="M10 3.5L5.5 8 10 12.5"></path>
+                  </svg>
+                </button>
+                <button type="button" class="icon-btn" id="next-project" aria-label="Next project">
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                    <path d="M6 3.5L10.5 8 6 12.5"></path>
+                  </svg>
+                </button>
+              </div>
+              <a class="mini-link" id="active-live-link" href="https://first-set-tau.vercel.app" target="_blank" rel="noopener noreferrer">LIVE ↗</a>
+              <button type="button" class="mini-action-btn" id="minimize-exhibition" aria-label="Minimize project exhibition">MINIMIZE ×</button>
+            </div>
+          </div>
+
+          <div class="explore-center-wrap">
+            <button type="button" class="explore-btn" id="explore-active" aria-label="Explore details for First Set">
+              <span class="explore-word">EXPLORE</span>
+              <span class="explore-stem" aria-hidden="true"></span>
+              <svg class="explore-plus" viewBox="0 0 14 14" width="13" height="13" aria-hidden="true">
+                <polygon fill="currentColor" points="7,11.042 6.08,11.042 6.08,7.889 2.958,7.889 2.958,6.096 6.08,6.096 6.08,2.958 7.921,2.958 7.921,6.096 11.042,6.096 11.042,7.889 7.921,7.889 7.921,11.042"></polygon>
+              </svg>
+            </button>
+          </div>
+
+          <div class="meta-actions">
+            <div class="corner-contact-stack">
+              <a class="corner-contact-link" id="corner-email-link" data-contact-preview="email" href="mailto:vivekshukla10700@gmail.com">EMAIL</a>
+              <a class="corner-contact-link" id="corner-github-link" data-contact-preview="github" href="https://github.com/vshukla0x" target="_blank" rel="noopener noreferrer">GITHUB</a>
+              <a class="corner-contact-link" id="corner-linkedin-link" data-contact-preview="linkedin" href="https://www.linkedin.com/in/vivek-cyber53/" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hackathons & Achievements -->
+    <section class="wrap section-band" id="achievements" aria-labelledby="achievements-heading">
+      <div class="section-header">
+        <h2 class="section-heading" id="achievements-heading">
+          <span class="mask-line"><span class="mask-inner" data-scroll-reveal>Hackathons &amp; achievements</span></span>
+        </h2>
+        <span class="section-note">2026–27</span>
+      </div>
+
+      <ul class="ledger">
+        <li class="ledger-row reveal-block" style="--delay:0ms">
+          <div class="ledger-org">
+            <strong>Google Developer Groups On Campus</strong>
+            Deen Dayal Upadhyaya Gorakhpur University
+          </div>
+          <div class="ledger-event">
+            <h3 class="ledger-title">Build with AI: DevOps — Season 1 (2026–27)</h3>
+            <p class="ledger-result">Second Runner-up — 3rd Place</p>
+          </div>
+          <div class="ledger-meta">
+            <div><span>Team:</span> std::zero</div>
+            <div><span>Project:</span> IET Grid</div>
+            <div><span>Role:</span> Team member</div>
+          </div>
+        </li>
+
+        <li class="ledger-row reveal-block" style="--delay:70ms">
+          <div class="ledger-org">
+            <strong>Smart India Hackathon 2026</strong>
+            2026
+          </div>
+          <div class="ledger-event">
+            <h3 class="ledger-title">Smart India Hackathon 2026</h3>
+            <p class="ledger-result">Qualified</p>
+          </div>
+          <div class="ledger-meta">
+            <div><span>Project:</span> O.A.S.I.S.</div>
+            <div>Collaborative team project</div>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- About & Education -->
+    <section class="wrap section-band" id="about" aria-labelledby="about-heading">
+      <div class="about-grid">
+        <div>
+          <h2 class="section-heading" id="about-heading">
+            <span class="mask-line"><span class="mask-inner" data-scroll-reveal>About</span></span>
+          </h2>
+          <div class="education-block reveal-block" style="--delay:40ms">
+            <p class="education-label">Education</p>
+            <p class="education-school">Deen Dayal Upadhyaya Gorakhpur University</p>
+            <p class="education-degree">BCA, Machine Learning and Data Science</p>
+            <p class="education-period">Sep 2025 – Sep 2028</p>
+          </div>
+        </div>
+
+        <div class="reveal-block" style="--delay:80ms">
+          <p class="about-body">
+            I'm a BCA student specializing in Machine Learning and Data Science at DDU Gorakhpur University. I enjoy solving problems and understanding how technology works by building practical projects. My interests currently include software development, Linux, cybersecurity and emerging technologies. I'm still exploring which field I want to specialize in.
+          </p>
+
+          <ul class="focus-list" aria-label="Technical areas and tools">
+            <li class="focus-item">
+              <span class="focus-term">Web &amp; applications</span>
+              <span class="focus-desc">HTML, CSS, JavaScript, TypeScript, React, Next.js, Vite, Python, FastAPI</span>
+            </li>
+            <li class="focus-item">
+              <span class="focus-term">Data &amp; storage</span>
+              <span class="focus-desc">PostgreSQL, Supabase, SQLite, Scikit-learn, localStorage</span>
+            </li>
+            <li class="focus-item">
+              <span class="focus-term">Systems &amp; workflow</span>
+              <span class="focus-desc">Arch Linux, Hyprland, Git, GitHub, networking and security fundamentals</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Contact & Minimal Footer with Interactive Animated Previews -->
+  <footer class="wrap section-band" id="contact">
+    <div class="contact-grid">
+      <div class="reveal-block" style="--delay:0ms">
+        <h2 class="section-heading">Get in touch.</h2>
+        <p class="contact-copy">Open to internships, junior opportunities and collaborative projects.</p>
+
+        <div class="contact-stage-preview" id="contact-stage-preview" aria-hidden="true">
+          <div class="contact-preview-bar">
+            <span><strong id="preview-bar-index">01</strong> / <span id="preview-bar-label">Email</span></span>
+            <span id="preview-bar-domain">vivekshukla10700@gmail.com</span>
+          </div>
+          <div class="contact-preview-viewport">
+            <div class="contact-preview-pane is-active" data-preview-pane="email">
+              <div class="contact-card-sheet">
+                <div class="sheet-meta">
+                  <span>Direct message</span>
+                  <span class="sheet-dot"></span>
+                </div>
+                <div class="sheet-main">
+                  <p class="sheet-kicker">Recipient</p>
+                  <p class="sheet-title">vivekshukla10700@gmail.com</p>
+                  <p class="sheet-sub">Direct inbox for software internships, hackathons, and engineering collaborations.</p>
+                </div>
+                <div class="sheet-footer">
+                  <span>Gorakhpur, India · IST</span>
+                  <span>mailto: active</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-preview-pane" data-preview-pane="github">
+              <img src="assets/contact-github.webp" alt="" width="960" height="600" loading="lazy" decoding="async">
+            </div>
+
+            <div class="contact-preview-pane" data-preview-pane="linkedin">
+              <div class="contact-card-sheet">
+                <div class="sheet-meta">
+                  <span>Professional profile</span>
+                  <span class="sheet-dot"></span>
+                </div>
+                <div class="sheet-main">
+                  <p class="sheet-kicker">Education &amp; background</p>
+                  <p class="sheet-title">Vivek Shukla — /in/vivek-cyber53</p>
+                  <p class="sheet-sub">BCA, Machine Learning and Data Science · Deen Dayal Upadhyaya Gorakhpur University (2025–2028).</p>
+                </div>
+                <div class="sheet-footer">
+                  <span>linkedin.com</span>
+                  <span>2026–27</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-channels reveal-block" style="--delay:60ms">
+        <div class="contact-channel is-selected" data-channel="email">
+          <span class="channel-index">01</span>
+          <div class="channel-info">
+            <span class="channel-label">Email</span>
+            <a class="email-link" href="mailto:vivekshukla10700@gmail.com" data-channel-trigger="email">vivekshukla10700@gmail.com</a>
+          </div>
+          <div class="channel-side">
+            <button type="button" class="copy-btn" id="copy-email" aria-label="Copy email address vivekshukla10700@gmail.com">Copy email</button>
+          </div>
+        </div>
+
+        <div class="contact-channel" data-channel="github">
+          <span class="channel-index">02</span>
+          <div class="channel-info">
+            <span class="channel-label">GitHub</span>
+            <a class="channel-link" href="https://github.com/vshukla0x" target="_blank" rel="noopener noreferrer" data-channel-trigger="github">github.com/vshukla0x</a>
+          </div>
+          <div class="channel-side">
+            <span class="channel-arrow" aria-hidden="true">↗</span>
+          </div>
+        </div>
+
+        <div class="contact-channel" data-channel="linkedin">
+          <span class="channel-index">03</span>
+          <div class="channel-info">
+            <span class="channel-label">LinkedIn</span>
+            <a class="channel-link" href="https://www.linkedin.com/in/vivek-cyber53/" target="_blank" rel="noopener noreferrer" data-channel-trigger="linkedin">linkedin.com/in/vivek-cyber53</a>
+          </div>
+          <div class="channel-side">
+            <span class="channel-arrow" aria-hidden="true">↗</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-base">
+      <span>Vivek Shukla — 2026</span>
+      <span>Gorakhpur, India</span>
+    </div>
+    <span class="visually-hidden" id="live-status" aria-live="polite"></span>
+  </footer>
 </div>
-</div>
-</div>
-<dl class="project-story">
-  <div><dt>Why I started</dt><dd>Many people only know the Windows installation their laptop came with. I wanted to make the alternatives, especially Linux, easier to discover.</dd></div>
-  <div><dt>What I’m exploring</dt><dd>Matching an OS or Linux distribution to someone’s needs, with app compatibility checked before preferences influence the recommendation.</dd></div>
-  <div><dt>Try it</dt><dd>Take the quiz to see a suggested OS, the reasons it fits your needs, and checks to make before switching.</dd></div>
-</dl></section>
-<section class="skills shell" id="skills" aria-labelledby="skills-title">
-  <div class="section-label">Skills &amp; learning</div>
-  <div class="skills-heading"><h2 id="skills-title">Learning through<br>making things.</h2><p>A snapshot of the tools in my projects and the topics I’m exploring as a BCA student.</p></div>
-  <div class="skills-grid">
-    <div class="skill-group"><h3>Web projects</h3><p>HTML, CSS, and JavaScript in First Set. React, TypeScript, and Vite in Better Tech.</p><a href="#work">See the projects <span aria-hidden="true">↑</span></a></div>
-    <div class="skill-group"><h3>Everyday tools</h3><p>Git and GitHub for project files. Linux as my daily environment, with Arch and Hyprland.</p></div>
-    <div class="skill-group"><h3>Currently exploring</h3><p>Networking, security fundamentals, operating systems, and software compatibility.</p></div>
+
+<!-- Floating Animated Destination Preview (Top Contact Links Hover & Focus) -->
+<div class="contact-popover" id="contact-popover" aria-hidden="true">
+  <div class="contact-popover-head">
+    <span><strong id="popover-index">02</strong> · <span id="popover-kind">GitHub</span></span>
+    <span id="popover-domain">github.com</span>
   </div>
-</section>
-</main>
-<section class="about" id="about"><div class="shell about-grid">
-<div>
-<div class="section-label">About</div>
-<h2>Still exploring.<br>Always building.</h2>
+  <div class="contact-popover-media">
+    <img id="popover-img" src="assets/contact-github.webp" alt="" width="960" height="600" hidden>
+    <div class="contact-card-sheet" id="popover-sheet" hidden>
+      <div class="sheet-meta">
+        <span id="popover-sheet-tag">Direct contact</span>
+        <span class="sheet-dot"></span>
+      </div>
+      <div class="sheet-main">
+        <p class="sheet-kicker" id="popover-sheet-kicker">Recipient</p>
+        <p class="sheet-title" id="popover-sheet-title"></p>
+        <p class="sheet-sub" id="popover-sheet-sub"></p>
+      </div>
+      <div class="sheet-footer">
+        <span id="popover-sheet-loc">Gorakhpur, India</span>
+        <span id="popover-sheet-cta">Open ↗</span>
+      </div>
+    </div>
+  </div>
+  <div class="contact-popover-foot" id="popover-foot">Repositories · IET Grid, O.A.S.I.S., First Set, Better Tech</div>
 </div>
-<div class="about-copy">
-<p>I'm a BCA student at DDU Gorakhpur, and I'm still figuring out which parts of tech I want to go deeper into. For now, I'd rather try things than pick a label too early.</p>
-<p>One project might be a workout app; the next might be about operating systems. In between, I'm learning about Linux, networking, security, and whatever else sparks my interest. I share what I build on <a class="inline-code" href="https://github.com/vshukla0x" target="_blank" rel="noopener">github.com/vshukla0x</a>.</p>
-</div>
-</div></section>
-<footer class="footer shell" id="contact"><div class="section-label">Contact</div>
-<h2>Got something<br>in mind? <a href="mailto:vivekshukla10700@gmail.com">Say hello</a>
-</h2>
-<div class="footer-bottom">
-<span>© 2026 Vivek Shukla · Gorakhpur, India</span><div>
-<a href="https://github.com/vshukla0x" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/vivek-cyber53/" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:vivekshukla10700@gmail.com">Email</a><button class="glow-toggle" type="button" aria-label="Background glow" aria-pressed="true">Glow on</button>
-</div>
-</div></footer>
-<dialog class="lightbox" id="lightbox" aria-label="Expanded project screenshot"><div class="light-in">
-<button type="button" class="close" id="light-close">Close ✕</button><img id="light-image" alt=""><div class="light-caption" id="light-caption"></div>
-</div></dialog>
+
+<!-- Accessible Project Detail Overlay -->
+<dialog class="project-dialog" id="project-dialog" aria-labelledby="dialog-title">
+  <div class="dialog-bar">
+    <div class="dialog-kicker">
+      <strong id="dialog-index">01</strong>
+      <span id="dialog-category">Category</span>
+    </div>
+    <button type="button" class="dialog-close" id="dialog-close" aria-label="Close project details">Close</button>
+  </div>
+
+  <div class="dialog-body" id="dialog-body">
+    <div class="dialog-head">
+      <div>
+        <h2 class="dialog-title" id="dialog-title">Project title</h2>
+        <p class="dialog-subtitle" id="dialog-subtitle"></p>
+      </div>
+      <div class="dialog-links" id="dialog-links"></div>
+    </div>
+
+    <div class="dialog-media-wrap">
+      <figure class="dialog-figure">
+        <img id="dialog-image" src="assets/first-set-showcase.webp" alt="" width="1440" height="900">
+      </figure>
+      <div class="dialog-tabs" id="dialog-tabs" role="group" aria-label="Available project screenshots"></div>
+    </div>
+
+    <div class="dialog-grid" id="dialog-grid"></div>
+  </div>
+</dialog>
+
+<script>
+(() => {
+  'use strict';
+
+  /* ============================================================
+     CONFIGURATION
+  ============================================================ */
+  const BACKGROUND_INTENSITY = 0.04; // Subtle neutral grey flow field (~4% opacity)
+  const TICK_COUNT = 24;
+  const PROJECTS = [
+    {
+      id: '01',
+      title: 'First Set',
+      titleChars: [
+        { c: 'F', g: 0.03 }, { c: 'I', g: 0.03 }, { c: 'R', g: 1.4 }, { c: 'S', g: 1.4 }, { c: 'T', g: 2.4 },
+        { c: 'S', g: 0.03 }, { c: 'E', g: 1.1 }, { c: 'T', g: 0 }
+      ],
+      highlight: 'Vanilla JS · Offline localStorage prototype',
+      category: 'Fitness & routine organizer',
+      subtitle: 'Workout, nutrition, and progress organizer (previously FitForge)',
+      summary: 'Browser-based fitness application for organizing workout sets, daily nutrition targets, and bodyweight progress.',
+      problem: 'Keeping workout splits, set loads, macro targets, and personal exercise progress organized in one accessible place without setup friction.',
+      solution: 'A responsive client-side web application built with vanilla HTML, CSS, and JavaScript that calculates baseline calorie and macro ranges and saves workouts locally.',
+      features: [
+        'Multi-screen flow covering Home dashboard, Train workout logger, Nutrition, Coach tips, Learn, and Progress',
+        'Onboarding baseline calculation using height, weight, goal, and Mifflin-St Jeor TDEE estimates',
+        'Interactive exercise set logging, countdown rest timer, and form guidance cues',
+        'Food and hydration logging, micronutrient progress tracking, and local bodyweight log persisted in localStorage'
+      ],
+      stack: ['HTML5', 'CSS3', 'JavaScript', 'localStorage'],
+      team: 'Individual project',
+      achievement: 'Not submitted to a competition',
+      limitations: 'Client-side prototype with no external server; workout and nutrition logs persist solely in browser localStorage.',
+      liveUrl: 'https://first-set-tau.vercel.app',
+      sourceUrl: 'https://github.com/vshukla0x/fit-forge-',
+      views: [
+        { label: 'App screens', src: 'assets/first-set-showcase.webp', alt: 'First Set daily dashboard, workout logger, and nutrition macro target screens' },
+        { label: 'Workout view', src: 'assets/fitforge-workout.webp', alt: 'First Set workout screen showing barbell bench press sets and rest timer' },
+        { label: 'Nutrition view', src: 'assets/fitforge-nutrition.webp', alt: 'First Set nutrition macro and calorie target view' },
+        { label: 'Progress view', src: 'assets/fitforge-progress.webp', alt: 'First Set progress metrics and personal records view' }
+      ]
+    },
+    {
+      id: '02',
+      title: 'O.A.S.I.S.',
+      titleChars: [
+        { c: 'O', g: 0.04 }, { c: '.', g: 1.3 }, { c: 'A', g: 0.04 }, { c: '.', g: 1.5 },
+        { c: 'S', g: 0.04 }, { c: '.', g: 1.3 }, { c: 'I', g: 0.04 }, { c: '.', g: 1.0 },
+        { c: 'S', g: 0.04 }, { c: '.', g: 0 }
+      ],
+      highlight: 'Smart India Hackathon 2026 · Qualified',
+      category: 'Oncology assessment & screening support',
+      subtitle: 'Oncology Assessment & Screening Information System',
+      summary: 'Collaborative research prototype for explainable screening and referral prioritization across oral, breast, and cervical pathways.',
+      problem: 'Frontline cancer screening and referral prioritization across distinct pathways requires structured, transparent clinical warning rules rather than opaque scoring.',
+      solution: 'A collaborative research prototype guiding structured six-step intake, applying red-flag safety rules above statistical signals, and surfacing explainable referral priorities.',
+      features: [
+        'Six-step guided assessment workflow covering oral, breast, and cervical screening pathways',
+        'Clinical red-flag safety rules that override low statistical risk signals',
+        'Ordinal Screening Priority Index paired with explicit contributing reasons',
+        'Referral history search, printable summaries, and optional experimental cervical risk-model training'
+      ],
+      stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Python', 'FastAPI', 'SQLite', 'Scikit-learn'],
+      team: 'Collaborative team project',
+      achievement: 'Smart India Hackathon 2026 — Qualified',
+      limitations: 'Research prototype only — not a clinically validated diagnostic system. Does not diagnose or exclude cancer and demonstrates workflows using synthetic scenarios.',
+      liveUrl: 'https://oasis-opal-nine.vercel.app',
+      sourceUrl: 'https://github.com/ThunderKhan/oasis',
+      views: [
+        { label: 'Overview', src: 'assets/oasis-home.webp', alt: 'O.A.S.I.S. overview showing oral, breast, and cervical clinical pathway engine' },
+        { label: 'Guided intake', src: 'assets/oasis-assessment.webp', alt: 'O.A.S.I.S. six-step patient assessment intake form' }
+      ]
+    },
+    {
+      id: '03',
+      title: 'Better Tech',
+      titleChars: [
+        { c: 'B', g: 0.03 }, { c: 'E', g: 0.03 }, { c: 'T', g: 0.85 }, { c: 'T', g: 0.03 }, { c: 'E', g: 0.03 }, { c: 'R', g: 2.15 },
+        { c: 'T', g: 0.03 }, { c: 'E', g: 0.75 }, { c: 'C', g: 0.03 }, { c: 'H', g: 0 }
+      ],
+      highlight: 'React & TypeScript · Deterministic OS recommender',
+      category: 'Operating system recommendation guide',
+      subtitle: 'Interactive operating system and Linux distribution recommender',
+      summary: 'Interactive browser guide matching hardware limits, required apps, and daily workflows to Windows, macOS, or Linux.',
+      problem: 'Choosing an operating system is confusing when hardware constraints, anti-cheat games, and required desktop applications differ across platforms.',
+      solution: 'A zero-backend React and TypeScript web tool that evaluates hard compatibility blockers first before scoring user preferences across Windows, macOS, and Linux distributions.',
+      features: [
+        'Three-step core questionnaire with conditional hardware and software compatibility checks',
+        'Nine optional refinement screens for RAM, storage, required software, and troubleshooting comfort',
+        'Deterministic blocker gates checking app availability, anti-cheat rules, and Mac hardware eligibility',
+        'Provisional results breakdown with Linux distribution exploration, glossary, and print/PDF support'
+      ],
+      stack: ['React', 'TypeScript', 'Vite', 'CSS'],
+      team: 'Individual project',
+      achievement: 'Not submitted to a competition',
+      limitations: 'All evaluations run locally in the browser using a curated compatibility snapshot and remain provisional pending exact hardware verification.',
+      liveUrl: 'https://better-tech-chi.vercel.app/',
+      sourceUrl: 'https://github.com/vshukla0x/better-tech-',
+      views: [
+        { label: 'Homepage', src: 'assets/better-tech-home.webp', alt: 'Better Tech homepage comparing Windows, macOS, and Linux' },
+        { label: 'Sample result', src: 'assets/better-tech-result.webp', alt: 'Better Tech provisional OS recommendation and compatibility checks screen' }
+      ]
+    },
+    {
+      id: '04',
+      title: 'IET Grid',
+      titleChars: [
+        { c: 'I', g: 0.03 }, { c: 'E', g: 0.03 }, { c: 'T', g: 2.5 },
+        { c: 'G', g: 1.1 }, { c: 'R', g: 1.15 }, { c: 'I', g: 0.65 }, { c: 'D', g: 0 }
+      ],
+      highlight: 'GDG Build with AI 2026 · 2nd Runner-up',
+      category: 'Campus scheduling & classroom management',
+      subtitle: 'Intelligent Campus Scheduling & Classroom Management for IET, DDUGU',
+      summary: 'Collaborative campus room discovery, conflict-checked bookings, and academic notices for IET, DDUGU.',
+      problem: 'Classroom availability, booking conflicts, and schedule updates across IET and Deeksha Bhawan buildings are difficult to coordinate reliably when schedules are fragmented.',
+      solution: 'A collaborative campus scheduling platform pairing interactive floor exploration with FastAPI and PostgreSQL conflict-checked room reservations, ranked alternative rooms, and in-app notices.',
+      features: [
+        'Room availability lookup by building, floor, date, time, duration, and minimum seats',
+        'Schematic floor map views alongside original organizer blueprint views',
+        'Conflict-safe lecture, practical, exam, and event reservations backed by PostgreSQL exclusion constraints',
+        'Deterministic alternative-room rankings, same-room lecture rescheduling, and academic notifications'
+      ],
+      stack: ['React', 'Vite', 'Python', 'FastAPI', 'Supabase', 'PostgreSQL'],
+      team: 'Team std::zero — Team member',
+      achievement: 'Second Runner-up (3rd Place) — GDG Build with AI: DevOps 2026',
+      limitations: 'Designed for live room discovery and conflict-safe booking; full automatic semester timetable generation remains a future milestone, and schematic floor views are non-surveyed representations.',
+      liveUrl: 'https://iet-grid.vercel.app',
+      sourceUrl: 'https://github.com/ThunderKhan/iet-grid',
+      views: [
+        { label: 'Workspace sign-in', src: 'assets/iet-grid.webp', alt: 'IET Grid workspace sign-in and campus operations overview' }
+      ]
+    }
+  ];
+
+  const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const finePointerQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
+  const prefersReduced = () => reducedMotionQuery.matches;
+
+  /* ============================================================
+     1. DENNIS SNELLENBERG ENTRY CURTAIN
+  ============================================================ */
+  function initIntroCurtain(onComplete) {
+    const curtain = document.getElementById('intro-curtain');
+    const wordEl = document.getElementById('intro-word');
+    const greetingEl = document.getElementById('intro-greeting');
+    const curvePath = document.getElementById('intro-curve-path');
+
+    let seen = false;
+    try { seen = sessionStorage.getItem('vk_intro_seen') === '1'; } catch (e) {}
+
+    if (!curtain || prefersReduced() || seen) {
+      document.documentElement.classList.remove('intro-pending');
+      if (curtain) curtain.remove();
+      onComplete();
+      return;
+    }
+
+    const greetings = ['Hello', 'नमस्ते', 'Bonjour', 'Hola', 'Ciao', 'こんにちは'];
+    const durations = [440, 155, 155, 155, 155, 240];
+    let step = 0;
+
+    greetingEl.classList.add('is-visible');
+
+    function finishCurtain() {
+      try { sessionStorage.setItem('vk_intro_seen', '1'); } catch (e) {}
+      if (curvePath) {
+        curvePath.setAttribute('d', 'M0,0 L1440,0 L1440,0 Q720,0 0,0 Z');
+      }
+      curtain.classList.add('is-leaving');
+      window.setTimeout(onComplete, 260);
+      curtain.addEventListener('transitionend', () => {
+        document.documentElement.classList.remove('intro-pending');
+        curtain.remove();
+      }, { once: true });
+      window.setTimeout(() => {
+        if (curtain.parentNode) {
+          document.documentElement.classList.remove('intro-pending');
+          curtain.remove();
+        }
+      }, 900);
+    }
+
+    function nextGreeting() {
+      if (step >= greetings.length - 1) {
+        window.setTimeout(finishCurtain, durations[step]);
+        return;
+      }
+      window.setTimeout(() => {
+        step += 1;
+        wordEl.textContent = greetings[step];
+        nextGreeting();
+      }, durations[step]);
+    }
+
+    nextGreeting();
+  }
+
+  /* ============================================================
+     2. OLIVIER LAROSE MASKED REVEALS & SCROLL OBSERVER
+  ============================================================ */
+  function initReveals() {
+    const loadMasks = document.querySelectorAll('.mask-inner[data-reveal]');
+    const introBlocks = document.querySelectorAll('.intro-links.reveal-block');
+    const scrollMasks = document.querySelectorAll('.mask-inner[data-scroll-reveal]');
+    const scrollBlocks = document.querySelectorAll('main > section:not(.intro-strip) .reveal-block, footer .reveal-block');
+    const allScrollTargets = [...scrollMasks, ...scrollBlocks];
+
+    if (prefersReduced()) {
+      loadMasks.forEach(el => el.classList.add('is-shown'));
+      introBlocks.forEach(el => el.classList.add('is-shown'));
+      allScrollTargets.forEach(el => el.classList.add('is-shown'));
+      return { triggerLoad() {} };
+    }
+
+    document.documentElement.classList.add('reveal-ready');
+
+    function revealVisibleScrollItems() {
+      const vh = window.innerHeight || 900;
+      allScrollTargets.forEach(el => {
+        if (el.classList.contains('is-shown')) return;
+        const host = el.closest('.mask-line') || el;
+        const rect = host.getBoundingClientRect();
+        if (rect.top <= vh + 24) {
+          el.classList.add('is-shown');
+        }
+      });
+    }
+
+    function triggerLoad() {
+      requestAnimationFrame(() => {
+        loadMasks.forEach(el => el.classList.add('is-shown'));
+        introBlocks.forEach(el => el.classList.add('is-shown'));
+        revealVisibleScrollItems();
+      });
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const target = entry.target.matches('.mask-line')
+            ? entry.target.querySelector('.mask-inner[data-scroll-reveal]')
+            : entry.target;
+          if (target) target.classList.add('is-shown');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.01, rootMargin: '60px 0px 40px 0px' });
+
+    scrollMasks.forEach(el => observer.observe(el.closest('.mask-line') || el));
+    scrollBlocks.forEach(el => observer.observe(el));
+    window.addEventListener('scroll', revealVisibleScrollItems, { passive: true });
+
+    return { triggerLoad };
+  }
+
+  /* ============================================================
+     3. SYNCHRONIZED EXHIBITION & ARISTIDE BENOIST SCRUBBER
+  ============================================================ */
+  const exhibitionSection = document.getElementById('work');
+  const minimizedGrid = document.getElementById('minimized-grid');
+  const miniCards = Array.from(document.querySelectorAll('.mini-card'));
+  const minimizeBtn = document.getElementById('minimize-exhibition');
+  const stage = document.getElementById('exhibition-stage');
+  const track = document.getElementById('exhibition-track');
+  const slides = Array.from(track.querySelectorAll('.exhibition-slide'));
+  const slideImages = slides.map(s => s.querySelector('img'));
+
+  const activeIndexEl = document.getElementById('active-index');
+  const activeCategoryEl = document.getElementById('active-category');
+  const activeTitleEl = document.getElementById('active-title');
+  const activeCaptionEl = document.getElementById('active-caption');
+  const activeLiveLink = document.getElementById('active-live-link');
+  const siteHeader = document.getElementById('site-header');
+  if (siteHeader) {
+    window.addEventListener('scroll', () => {
+      siteHeader.classList.toggle('is-scrolled', window.scrollY > 24);
+    }, { passive: true });
+  }
+  const exploreActiveBtn = document.getElementById('explore-active');
+  const prevBtn = document.getElementById('prev-project');
+  const nextBtn = document.getElementById('next-project');
+  const projectDialogEl = document.getElementById('project-dialog');
+
+  let dialogClosedRecently = false;
+  if (projectDialogEl) {
+    projectDialogEl.addEventListener('close', () => {
+      dialogClosedRecently = true;
+      window.setTimeout(() => { dialogClosedRecently = false; }, 80);
+    });
+  }
+
+  const scrubbers = [
+    document.getElementById('scrubber-desktop'),
+    document.getElementById('scrubber-mobile')
+  ].filter(Boolean);
+
+  // Build 24 thin vertical tick marks inside each scrubber
+  const stopTicks = new Set([0, 8, 15, 23]);
+  const scrubberWidgets = scrubbers.map(root => {
+    const ticksHost = root.querySelector('.scrubber-ticks');
+    for (let i = 0; i < TICK_COUNT; i++) {
+      const tick = document.createElement('span');
+      tick.className = stopTicks.has(i) ? 'scrubber-tick is-stop' : 'scrubber-tick';
+      ticksHost.appendChild(tick);
+    }
+    return {
+      root,
+      ticksHost,
+      thumb: root.querySelector('.scrubber-thumb'),
+      currentEl: root.querySelector('.scrubber-current')
+    };
+  });
+
+  const DEFAULT_MINIMIZED_META = {
+    index: '01',
+    category: 'Select a project',
+    caption: 'Click any preview to expand'
+  };
+
+  const gallery = {
+    expanded: false,
+    current: 0,
+    target: 0,
+    activeIndex: 0,
+    draggingGallery: false,
+    draggingScrubber: false,
+    rafId: 0,
+    slideW: 800,
+    stepPx: 848,
+    centerOffset: 0
+  };
+
+  let pendingTitleChars = [];
+  let expandTimer = 0;
+  let expandRevealTimer = 0;
+  let activeFlipFrame = null;
+
+  function setCornerPreview(idx) {
+    if (gallery.expanded) return;
+    const p = PROJECTS[idx];
+    if (!p) return;
+    activeIndexEl.textContent = p.id;
+    activeCategoryEl.textContent = p.category;
+    activeCaptionEl.textContent = p.highlight;
+  }
+
+  function resetCornerPreview() {
+    if (gallery.expanded) return;
+    activeIndexEl.textContent = DEFAULT_MINIMIZED_META.index;
+    activeCategoryEl.textContent = DEFAULT_MINIMIZED_META.category;
+    activeCaptionEl.textContent = DEFAULT_MINIMIZED_META.caption;
+  }
+
+  function measureGallery() {
+    if (!slides.length) return;
+    const viewportW = stage.clientWidth;
+    const slideRect = slides[0].getBoundingClientRect();
+    const styles = getComputedStyle(track);
+    const gap = parseFloat(styles.columnGap || styles.gap) || 32;
+    gallery.slideW = slideRect.width || slides[0].offsetWidth;
+    gallery.stepPx = gallery.slideW + gap;
+    gallery.centerOffset = (viewportW - gallery.slideW) / 2;
+    renderGalleryFrame();
+  }
+
+  function clampProgress(val) {
+    return Math.max(0, Math.min(PROJECTS.length - 1, val));
+  }
+
+  function revealTitleChars() {
+    if (!pendingTitleChars.length) return;
+    const chars = pendingTitleChars;
+    pendingTitleChars = [];
+    void activeTitleEl.offsetWidth;
+    requestAnimationFrame(() => {
+      chars.forEach(el => el.classList.remove('is-entering'));
+    });
+  }
+
+  function renderTitleChars(project, animate, deferReveal) {
+    const frag = document.createDocumentFragment();
+    const charsToReveal = [];
+    project.titleChars.forEach((item, i) => {
+      const mask = document.createElement('span');
+      mask.className = 'ex-char-mask';
+      mask.setAttribute('aria-hidden', 'true');
+
+      const glyph = document.createElement('span');
+      glyph.className = animate ? 'ex-char is-entering' : 'ex-char';
+      if (animate) glyph.style.setProperty('--char-delay', `${i * 22}ms`);
+      glyph.textContent = item.c;
+
+      mask.appendChild(glyph);
+      frag.appendChild(mask);
+      if (animate) charsToReveal.push(glyph);
+
+      if (item.g > 0) {
+        const sp = document.createElement('span');
+        sp.className = 'ex-char-space';
+        sp.setAttribute('aria-hidden', 'true');
+        sp.style.setProperty('--grow', String(item.g));
+        frag.appendChild(sp);
+      }
+    });
+
+    activeTitleEl.setAttribute('aria-label', project.title);
+    activeTitleEl.dataset.renderedId = project.id;
+    activeTitleEl.replaceChildren(frag);
+    pendingTitleChars = animate ? charsToReveal : [];
+
+    if (animate && !deferReveal && charsToReveal.length) {
+      revealTitleChars();
+    }
+  }
+
+  function syncActiveMetadata(idx, options = {}) {
+    const project = PROJECTS[idx];
+    if (!project) return;
+    const force = Boolean(options.force);
+    const animateTitle = options.animateTitle !== undefined ? options.animateTitle : !prefersReduced();
+    const deferTitleReveal = Boolean(options.deferTitleReveal);
+    if (!force && idx === gallery.activeIndex && activeTitleEl.dataset.renderedId === project.id) return;
+
+    gallery.activeIndex = idx;
+    activeIndexEl.textContent = project.id;
+    activeCategoryEl.textContent = project.category;
+    activeCaptionEl.textContent = project.highlight;
+    exploreActiveBtn.setAttribute('aria-label', `Explore details for ${project.title}`);
+
+    if (activeLiveLink && project.liveUrl) activeLiveLink.href = project.liveUrl;
+
+    renderTitleChars(project, animateTitle, deferTitleReveal);
+
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('is-active', i === idx);
+    });
+
+    prevBtn.disabled = idx === 0;
+    nextBtn.disabled = idx === PROJECTS.length - 1;
+
+    scrubberWidgets.forEach(w => {
+      w.currentEl.textContent = project.id;
+      w.root.setAttribute('aria-valuenow', String(idx + 1));
+      w.root.setAttribute('aria-valuetext', `Project ${idx + 1} of ${PROJECTS.length}: ${project.title}`);
+    });
+  }
+
+  function renderGalleryFrame() {
+    const p = gallery.current;
+    const trackX = gallery.centerOffset - p * gallery.stepPx;
+    track.style.transform = `translate3d(${trackX.toFixed(2)}px, 0, 0)`;
+
+    const maxShift = 22;
+    for (let i = 0; i < slideImages.length; i++) {
+      const img = slideImages[i];
+      if (!img) continue;
+      const offset = Math.max(-1.4, Math.min(1.4, i - p));
+      const shift = prefersReduced() ? 0 : offset * maxShift;
+      img.style.transform = `scale(1.035) translate3d(${shift.toFixed(2)}px, 0, 0)`;
+    }
+
+    const nearest = Math.round(clampProgress(p));
+    if (gallery.expanded) {
+      syncActiveMetadata(nearest);
+    }
+
+    if (!prefersReduced()) {
+      const titleDrift = (nearest - p) * 34;
+      activeTitleEl.style.transform = `translate3d(${titleDrift.toFixed(2)}px, 0, 0)`;
+    } else {
+      activeTitleEl.style.transform = '';
+    }
+
+    const norm = p / (PROJECTS.length - 1);
+    scrubberWidgets.forEach(w => {
+      const trackW = w.root.clientWidth;
+      const thumbW = w.thumb.offsetWidth;
+      if (trackW <= 0) return;
+      const edgePad = 20;
+      const usable = Math.max(0, trackW - thumbW - edgePad * 2);
+      const x = edgePad + norm * usable;
+      w.thumb.style.transform = `translate3d(${x.toFixed(2)}px, -50%, 0)`;
+    });
+  }
+
+  function startGalleryAnimation() {
+    if (gallery.rafId) return;
+    function tick() {
+      if (gallery.draggingGallery || gallery.draggingScrubber || prefersReduced()) {
+        gallery.current = gallery.draggingGallery || gallery.draggingScrubber ? gallery.current : gallery.target;
+        renderGalleryFrame();
+        gallery.rafId = 0;
+        return;
+      }
+      const diff = gallery.target - gallery.current;
+      if (Math.abs(diff) < 0.0012) {
+        gallery.current = gallery.target;
+        renderGalleryFrame();
+        gallery.rafId = 0;
+        return;
+      }
+      gallery.current += diff * 0.16;
+      renderGalleryFrame();
+      gallery.rafId = requestAnimationFrame(tick);
+    }
+    gallery.rafId = requestAnimationFrame(tick);
+  }
+
+  function expandProject(index, sourceEl, options = {}) {
+    const targetIdx = Math.round(clampProgress(index));
+    if (gallery.expanded) {
+      goToProject(targetIdx);
+      return;
+    }
+
+    clearTimeout(expandTimer);
+    clearTimeout(expandRevealTimer);
+    if (activeFlipFrame) {
+      activeFlipFrame.style.transition = '';
+      activeFlipFrame.style.transform = '';
+      activeFlipFrame = null;
+    }
+    if (gallery.rafId) {
+      cancelAnimationFrame(gallery.rafId);
+      gallery.rafId = 0;
+    }
+
+    const card = sourceEl && sourceEl.closest ? sourceEl.closest('.mini-card') : miniCards[targetIdx];
+    const fromFrame = card ? (card.querySelector('.mini-card-frame') || card) : null;
+    const fromRect = fromFrame ? fromFrame.getBoundingClientRect() : null;
+    const animate = !prefersReduced() && !options.instant;
+
+    miniCards.forEach(c => c.classList.remove('is-highlighted'));
+    gallery.expanded = true;
+    gallery.current = targetIdx;
+    gallery.target = targetIdx;
+
+    syncActiveMetadata(targetIdx, {
+      force: true,
+      animateTitle: animate,
+      deferTitleReveal: animate
+    });
+
+    exhibitionSection.classList.add('is-expanded');
+    if (animate && fromRect && fromRect.width > 0) {
+      exhibitionSection.classList.add('is-animating-expand');
+    } else {
+      exhibitionSection.classList.remove('is-animating-expand');
+    }
+
+    measureGallery();
+
+    const targetSlide = slides[targetIdx];
+    const targetFrame = targetSlide ? targetSlide.querySelector('.slide-frame') : null;
+
+    if (animate && fromRect && targetFrame && fromRect.width > 0) {
+      const toRect = targetFrame.getBoundingClientRect();
+      if (toRect.width > 0 && toRect.height > 0) {
+        const scaleX = fromRect.width / toRect.width;
+        const scaleY = fromRect.height / toRect.height;
+        const dx = (fromRect.left + fromRect.width / 2) - (toRect.left + toRect.width / 2);
+        const dy = (fromRect.top + fromRect.height / 2) - (toRect.top + toRect.height / 2);
+
+        activeFlipFrame = targetFrame;
+        targetFrame.style.transition = 'none';
+        targetFrame.style.transform = `translate3d(${dx.toFixed(2)}px, ${dy.toFixed(2)}px, 0) scale(${scaleX.toFixed(4)}, ${scaleY.toFixed(4)})`;
+        void targetFrame.offsetWidth;
+
+        targetFrame.style.transition = 'transform 620ms cubic-bezier(0.22, 1, 0.36, 1)';
+        targetFrame.style.transform = 'translate3d(0, 0, 0) scale(1, 1)';
+
+        expandRevealTimer = window.setTimeout(() => {
+          exhibitionSection.classList.remove('is-animating-expand');
+          revealTitleChars();
+        }, 190);
+
+        const cleanupFlip = () => {
+          if (activeFlipFrame === targetFrame) activeFlipFrame = null;
+          targetFrame.style.transition = '';
+          targetFrame.style.transform = '';
+          exhibitionSection.classList.remove('is-animating-expand');
+          revealTitleChars();
+          clearTimeout(expandTimer);
+        };
+        targetFrame.addEventListener('transitionend', (ev) => {
+          if (ev.target === targetFrame && ev.propertyName === 'transform') cleanupFlip();
+        }, { once: true });
+        expandTimer = window.setTimeout(cleanupFlip, 680);
+      } else {
+        exhibitionSection.classList.remove('is-animating-expand');
+        revealTitleChars();
+      }
+    } else if (animate) {
+      exhibitionSection.classList.remove('is-animating-expand');
+      revealTitleChars();
+    }
+  }
+
+  function minimizeExhibition(restoreFocus) {
+    if (!gallery.expanded) return;
+    clearTimeout(expandTimer);
+    clearTimeout(expandRevealTimer);
+    if (activeFlipFrame) {
+      activeFlipFrame.style.transition = '';
+      activeFlipFrame.style.transform = '';
+      activeFlipFrame = null;
+    }
+    if (gallery.rafId) {
+      cancelAnimationFrame(gallery.rafId);
+      gallery.rafId = 0;
+    }
+    gallery.expanded = false;
+    gallery.draggingGallery = false;
+    gallery.draggingScrubber = false;
+    stage.classList.remove('is-dragging');
+    exhibitionSection.classList.remove('is-animating-expand', 'is-expanded');
+
+    const lastIdx = Math.max(0, gallery.activeIndex);
+    miniCards.forEach((c, i) => c.classList.toggle('is-highlighted', i === lastIdx));
+    resetCornerPreview();
+    if (restoreFocus && miniCards[lastIdx]) {
+      miniCards[lastIdx].focus({ preventScroll: true });
+    }
+  }
+
+  function goToProject(index) {
+    const clamped = Math.round(clampProgress(index));
+    if (!gallery.expanded) {
+      expandProject(clamped);
+      return;
+    }
+    gallery.target = clamped;
+    if (prefersReduced()) {
+      gallery.current = clamped;
+      renderGalleryFrame();
+    } else {
+      startGalleryAnimation();
+    }
+  }
+
+  miniCards.forEach((card, idx) => {
+    card.addEventListener('click', () => {
+      const targetIdx = Number(card.dataset.expandIndex ?? idx);
+      expandProject(targetIdx, card);
+    });
+    card.addEventListener('pointerenter', () => {
+      miniCards.forEach(c => c.classList.remove('is-highlighted'));
+      setCornerPreview(Number(card.dataset.expandIndex ?? idx));
+    });
+    card.addEventListener('focus', () => {
+      miniCards.forEach(c => c.classList.remove('is-highlighted'));
+      setCornerPreview(Number(card.dataset.expandIndex ?? idx));
+    });
+    card.addEventListener('blur', () => {
+      window.setTimeout(() => {
+        if (!minimizedGrid || !minimizedGrid.contains(document.activeElement)) {
+          resetCornerPreview();
+        }
+      }, 20);
+    });
+  });
+
+  if (minimizedGrid) {
+    minimizedGrid.addEventListener('pointerleave', resetCornerPreview);
+  }
+
+  if (minimizeBtn) {
+    minimizeBtn.addEventListener('click', () => minimizeExhibition(true));
+  }
+
+  prevBtn.addEventListener('click', () => goToProject(gallery.activeIndex - 1));
+  nextBtn.addEventListener('click', () => goToProject(gallery.activeIndex + 1));
+
+  // Gallery Pointer Drag & Velocity Snap
+  let gDrag = null;
+
+  stage.addEventListener('pointerdown', (e) => {
+    if (!gallery.expanded) return;
+    if (e.button !== 0 && e.pointerType === 'mouse') return;
+    gDrag = {
+      pointerId: e.pointerId,
+      startX: e.clientX,
+      startY: e.clientY,
+      startProgress: gallery.current,
+      lastX: e.clientX,
+      lastTime: performance.now(),
+      vx: 0,
+      locked: false,
+      cancelled: false
+    };
+  });
+
+  stage.addEventListener('pointermove', (e) => {
+    if (!gDrag || e.pointerId !== gDrag.pointerId || gDrag.cancelled) return;
+    const dx = e.clientX - gDrag.startX;
+    const dy = e.clientY - gDrag.startY;
+
+    if (!gDrag.locked) {
+      if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 8) {
+        gDrag.cancelled = true;
+        return;
+      }
+      if (Math.abs(dx) < 6) return;
+      gDrag.locked = true;
+      gallery.draggingGallery = true;
+      stage.classList.add('is-dragging');
+      stage.setPointerCapture(e.pointerId);
+    }
+
+    const now = performance.now();
+    const dt = Math.max(8, now - gDrag.lastTime);
+    const instantVx = (e.clientX - gDrag.lastX) / dt;
+    gDrag.vx = gDrag.vx * 0.6 + instantVx * 0.4;
+    gDrag.lastX = e.clientX;
+    gDrag.lastTime = now;
+
+    let raw = gDrag.startProgress - dx / gallery.stepPx;
+    if (raw < 0) raw = raw * 0.25;
+    else if (raw > PROJECTS.length - 1) raw = (PROJECTS.length - 1) + (raw - (PROJECTS.length - 1)) * 0.25;
+
+    gallery.current = raw;
+    gallery.target = raw;
+    renderGalleryFrame();
+  });
+
+  function endGalleryDrag(e) {
+    if (!gDrag || e.pointerId !== gDrag.pointerId) return;
+    const wasLocked = gDrag.locked;
+    const velocity = gDrag.vx;
+    gDrag = null;
+
+    if (!wasLocked) return;
+
+    gallery.draggingGallery = false;
+    stage.classList.remove('is-dragging');
+    if (stage.hasPointerCapture(e.pointerId)) {
+      stage.releasePointerCapture(e.pointerId);
+    }
+
+    stage.dataset.justDragged = '1';
+    window.setTimeout(() => { delete stage.dataset.justDragged; }, 60);
+
+    const throwOffset = prefersReduced() ? 0 : -(velocity * 180) / gallery.stepPx;
+    goToProject(Math.round(clampProgress(gallery.current + throwOffset)));
+  }
+
+  stage.addEventListener('pointerup', endGalleryDrag);
+  stage.addEventListener('pointercancel', endGalleryDrag);
+
+  // Horizontal Trackpad / Mouse Wheel (never blocks vertical scroll)
+  let wheelTimer = 0;
+  stage.addEventListener('wheel', (e) => {
+    if (!gallery.expanded) return;
+    if (Math.abs(e.deltaX) <= Math.abs(e.deltaY) || Math.abs(e.deltaX) < 3) return;
+    e.preventDefault();
+    const deltaP = e.deltaX / Math.max(400, gallery.stepPx * 0.9);
+    gallery.target = clampProgress(gallery.target + deltaP);
+    if (prefersReduced()) {
+      gallery.current = Math.round(gallery.target);
+      renderGalleryFrame();
+    } else {
+      startGalleryAnimation();
+      clearTimeout(wheelTimer);
+      wheelTimer = window.setTimeout(() => {
+        goToProject(Math.round(gallery.target));
+      }, 110);
+    }
+  }, { passive: false });
+
+  // Scrubber Interaction (Click, Drag, Keyboard)
+  scrubberWidgets.forEach(w => {
+    function progressFromClientX(clientX) {
+      const rect = w.root.getBoundingClientRect();
+      const thumbW = w.thumb.offsetWidth || 72;
+      const pad = 20 + thumbW * 0.5;
+      const ratio = (clientX - (rect.left + pad)) / Math.max(1, rect.width - pad * 2);
+      return clampProgress(ratio * (PROJECTS.length - 1));
+    }
+
+    w.root.addEventListener('pointerdown', (e) => {
+      if (e.button !== 0 && e.pointerType === 'mouse') return;
+      e.preventDefault();
+      const p = progressFromClientX(e.clientX);
+      if (!gallery.expanded) {
+        expandProject(Math.round(p), null, { instant: true });
+      }
+      gallery.draggingScrubber = true;
+      w.root.classList.add('is-dragging');
+      w.root.setPointerCapture(e.pointerId);
+      gallery.current = p;
+      gallery.target = p;
+      renderGalleryFrame();
+    });
+
+    w.root.addEventListener('pointermove', (e) => {
+      if (!gallery.draggingScrubber || !w.root.hasPointerCapture(e.pointerId)) return;
+      const p = progressFromClientX(e.clientX);
+      gallery.current = p;
+      gallery.target = p;
+      renderGalleryFrame();
+    });
+
+    function releaseScrubber(e) {
+      if (!gallery.draggingScrubber) return;
+      gallery.draggingScrubber = false;
+      w.root.classList.remove('is-dragging');
+      if (w.root.hasPointerCapture(e.pointerId)) {
+        w.root.releasePointerCapture(e.pointerId);
+      }
+      goToProject(Math.round(gallery.current));
+    }
+
+    w.root.addEventListener('pointerup', releaseScrubber);
+    w.root.addEventListener('pointercancel', releaseScrubber);
+
+    w.root.addEventListener('keydown', (e) => {
+      if (!gallery.expanded && (e.key === 'Enter' || e.key === ' ')) {
+        e.preventDefault();
+        expandProject(gallery.activeIndex);
+        return;
+      }
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (!gallery.expanded) expandProject(Math.min(PROJECTS.length - 1, gallery.activeIndex + 1));
+        else goToProject(gallery.activeIndex + 1);
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (!gallery.expanded) expandProject(Math.max(0, gallery.activeIndex - 1));
+        else goToProject(gallery.activeIndex - 1);
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        expandProject(0);
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        expandProject(PROJECTS.length - 1);
+      }
+    });
+  });
+
+  // Keyboard navigation inside exhibition viewport & Escape to minimize
+  stage.addEventListener('keydown', (e) => {
+    if (!gallery.expanded) return;
+    if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      goToProject(gallery.activeIndex + 1);
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      goToProject(gallery.activeIndex - 1);
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && gallery.expanded && (!projectDialogEl || !projectDialogEl.open) && !dialogClosedRecently) {
+      minimizeExhibition(true);
+    }
+  });
+
+  /* ============================================================
+     4. ACCESSIBLE PROJECT DETAIL DIALOG
+  ============================================================ */
+  const dialog = document.getElementById('project-dialog');
+  const dialogClose = document.getElementById('dialog-close');
+  const dialogIndex = document.getElementById('dialog-index');
+  const dialogCategory = document.getElementById('dialog-category');
+  const dialogTitle = document.getElementById('dialog-title');
+  const dialogSubtitle = document.getElementById('dialog-subtitle');
+  const dialogLinks = document.getElementById('dialog-links');
+  const dialogImage = document.getElementById('dialog-image');
+  const dialogTabs = document.getElementById('dialog-tabs');
+  const dialogGrid = document.getElementById('dialog-grid');
+  let lastTriggerEl = null;
+
+  function createEl(tag, className, text) {
+    const el = document.createElement(tag);
+    if (className) el.className = className;
+    if (text !== undefined) el.textContent = text;
+    return el;
+  }
+
+  function openProjectDialog(index, triggerEl) {
+    const p = PROJECTS[index];
+    if (!p || !dialog) return;
+
+    lastTriggerEl = triggerEl || exploreActiveBtn;
+    dialogIndex.textContent = p.id;
+    dialogCategory.textContent = p.category;
+    dialogTitle.textContent = p.title;
+    dialogSubtitle.textContent = p.subtitle;
+
+    dialogLinks.replaceChildren();
+    if (p.liveUrl) {
+      const live = createEl('a', 'dialog-btn is-primary', 'Live application');
+      live.href = p.liveUrl;
+      live.target = '_blank';
+      live.rel = 'noopener noreferrer';
+      dialogLinks.appendChild(live);
+    }
+    if (p.sourceUrl) {
+      const src = createEl('a', 'dialog-btn', 'Source code');
+      src.href = p.sourceUrl;
+      src.target = '_blank';
+      src.rel = 'noopener noreferrer';
+      dialogLinks.appendChild(src);
+    }
+
+    dialogTabs.replaceChildren();
+    const firstView = p.views[0];
+    dialogImage.src = firstView.src;
+    dialogImage.alt = firstView.alt;
+
+    if (p.views.length > 1) {
+      dialogTabs.hidden = false;
+      p.views.forEach((v, idx) => {
+        const tab = createEl('button', 'dialog-tab', v.label);
+        tab.type = 'button';
+        tab.setAttribute('aria-pressed', String(idx === 0));
+        tab.addEventListener('click', () => {
+          dialogImage.src = v.src;
+          dialogImage.alt = v.alt;
+          dialogTabs.querySelectorAll('.dialog-tab').forEach(b => b.setAttribute('aria-pressed', String(b === tab)));
+        });
+        dialogTabs.appendChild(tab);
+      });
+    } else {
+      dialogTabs.hidden = true;
+    }
+
+    dialogGrid.replaceChildren();
+
+    const blocks = [
+      { heading: 'Problem', text: p.problem },
+      { heading: 'Solution', text: p.solution },
+      { heading: 'Key features', list: p.features, wide: true },
+      { heading: 'Team & role', text: p.team },
+      { heading: 'Achievement', text: p.achievement },
+      { heading: 'Technology stack', tags: p.stack, wide: true },
+      { heading: 'Scope & documented limitations', text: p.limitations, wide: true }
+    ];
+
+    blocks.forEach(item => {
+      const block = createEl('div', item.wide ? 'detail-block is-wide' : 'detail-block');
+      block.appendChild(createEl('h3', '', item.heading));
+      if (item.list) {
+        const ul = createEl('ul');
+        item.list.forEach(liText => ul.appendChild(createEl('li', '', liText)));
+        block.appendChild(ul);
+      } else if (item.tags) {
+        const ul = createEl('ul', 'stack-list');
+        item.tags.forEach(t => ul.appendChild(createEl('li', '', t)));
+        block.appendChild(ul);
+      } else {
+        block.appendChild(createEl('p', '', item.text));
+      }
+      dialogGrid.appendChild(block);
+    });
+
+    if (typeof dialog.showModal === 'function') {
+      dialog.showModal();
+      document.body.style.overflow = 'hidden';
+      dialogClose.focus();
+    }
+  }
+
+  function closeProjectDialog() {
+    if (dialog.open) dialog.close();
+  }
+
+  dialog.addEventListener('close', () => {
+    document.body.style.overflow = '';
+    if (lastTriggerEl && typeof lastTriggerEl.focus === 'function') {
+      lastTriggerEl.focus({ preventScroll: true });
+    }
+  });
+
+  dialogClose.addEventListener('click', closeProjectDialog);
+  dialog.addEventListener('click', (e) => {
+    if (e.target === dialog) closeProjectDialog();
+  });
+
+  slides.forEach((slide, idx) => {
+    const trigger = slide.querySelector('.slide-trigger');
+    trigger.addEventListener('click', () => {
+      if (stage.dataset.justDragged === '1') return;
+      if (idx !== gallery.activeIndex) {
+        goToProject(idx);
+      } else {
+        openProjectDialog(idx, trigger);
+      }
+    });
+  });
+
+  exploreActiveBtn.addEventListener('click', () => {
+    openProjectDialog(gallery.activeIndex, exploreActiveBtn);
+  });
+
+  /* ============================================================
+     5. ACCESSIBLE EMAIL COPY & INTERACTIVE CONTACT PREVIEWS
+  ============================================================ */
+  const copyBtn = document.getElementById('copy-email');
+  const liveStatus = document.getElementById('live-status');
+  let copyTimer = 0;
+
+  copyBtn.addEventListener('click', async () => {
+    const email = 'vivekshukla10700@gmail.com';
+    let copied = false;
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(email);
+        copied = true;
+      }
+    } catch (e) {}
+
+    if (!copied) {
+      const ta = document.createElement('textarea');
+      ta.value = email;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { copied = document.execCommand('copy'); } catch (e) {}
+      ta.remove();
+    }
+
+    copyBtn.textContent = copied ? 'Copied' : email;
+    copyBtn.classList.toggle('is-copied', copied);
+    liveStatus.textContent = copied ? 'Email address copied to clipboard.' : 'Email address: ' + email;
+
+    clearTimeout(copyTimer);
+    copyTimer = window.setTimeout(() => {
+      copyBtn.textContent = 'Copy email';
+      copyBtn.classList.remove('is-copied');
+      liveStatus.textContent = '';
+    }, 2200);
+  });
+
+  // Contact channel switcher & animated destination preview cards
+  const CONTACT_CHANNELS = {
+    email: {
+      index: '01',
+      kind: 'Email',
+      domain: 'vivekshukla10700@gmail.com',
+      mode: 'sheet',
+      tag: 'Direct inbox',
+      kicker: 'Recipient',
+      title: 'vivekshukla10700@gmail.com',
+      sub: 'Open for software internships, hackathons, and engineering collaborations.',
+      loc: 'Gorakhpur, India · IST',
+      cta: 'Compose email ↗',
+      foot: 'Direct mailto link · Instant copy available in Contact'
+    },
+    github: {
+      index: '02',
+      kind: 'GitHub',
+      domain: 'github.com/vshukla0x',
+      mode: 'img',
+      src: 'assets/contact-github.webp',
+      foot: '6 public repositories · IET Grid, O.A.S.I.S., First Set, Better Tech'
+    },
+    linkedin: {
+      index: '03',
+      kind: 'LinkedIn',
+      domain: 'linkedin.com/in/vivek-cyber53',
+      mode: 'sheet',
+      tag: 'Professional profile',
+      kicker: 'Education',
+      title: 'Vivek Shukla — /in/vivek-cyber53',
+      sub: 'BCA, Machine Learning and Data Science · DDU Gorakhpur University (2025–2028).',
+      loc: 'Gorakhpur, India',
+      cta: 'Open profile ↗',
+      foot: 'Academic timeline & project updates'
+    }
+  };
+
+  function initContactPreviews() {
+    const channelRows = Array.from(document.querySelectorAll('.contact-channel[data-channel]'));
+    const previewPanes = Array.from(document.querySelectorAll('.contact-preview-pane[data-preview-pane]'));
+    const barIndex = document.getElementById('preview-bar-index');
+    const barLabel = document.getElementById('preview-bar-label');
+    const barDomain = document.getElementById('preview-bar-domain');
+
+    function setContactStage(channelKey) {
+      const cfg = CONTACT_CHANNELS[channelKey];
+      if (!cfg) return;
+      channelRows.forEach(row => row.classList.toggle('is-selected', row.dataset.channel === channelKey));
+      previewPanes.forEach(pane => pane.classList.toggle('is-active', pane.dataset.previewPane === channelKey));
+      if (barIndex) barIndex.textContent = cfg.index;
+      if (barLabel) barLabel.textContent = cfg.kind;
+      if (barDomain) barDomain.textContent = cfg.domain;
+    }
+
+    channelRows.forEach(row => {
+      const key = row.dataset.channel;
+      row.addEventListener('pointerenter', () => setContactStage(key));
+      row.addEventListener('focusin', () => setContactStage(key));
+      row.addEventListener('click', (e) => {
+        if (!e.target.closest('a, button')) setContactStage(key);
+      });
+    });
+
+    // Floating Animated Destination Popover for header/intro contact links (GitHub, Email)
+    const popover = document.getElementById('contact-popover');
+    if (!popover) return;
+    const popIdx = document.getElementById('popover-index');
+    const popKind = document.getElementById('popover-kind');
+    const popDomain = document.getElementById('popover-domain');
+    const popImg = document.getElementById('popover-img');
+    const popSheet = document.getElementById('popover-sheet');
+    const popTag = document.getElementById('popover-sheet-tag');
+    const popKicker = document.getElementById('popover-sheet-kicker');
+    const popTitle = document.getElementById('popover-sheet-title');
+    const popSub = document.getElementById('popover-sheet-sub');
+    const popLoc = document.getElementById('popover-sheet-loc');
+    const popCta = document.getElementById('popover-sheet-cta');
+    const popFoot = document.getElementById('popover-foot');
+
+    let hideTimer = 0;
+    let activeAnchor = null;
+
+    function positionPopover(anchor, nudgeX, nudgeY) {
+      const stack = anchor.closest('.corner-contact-stack');
+      const refRect = stack ? stack.getBoundingClientRect() : anchor.getBoundingClientRect();
+      const popW = popover.offsetWidth || 288;
+      const popH = popover.offsetHeight || 236;
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+
+      const rawX = refRect.right - popW + (nudgeX || 0);
+      const tx = Math.max(12, Math.min(vw - popW - 12, rawX));
+
+      const placeBelow = !stack && (refRect.bottom + 10 + popH <= vh - 12);
+      const ty = placeBelow ? refRect.bottom + 10 + (nudgeY || 0) : Math.max(12, refRect.top - popH - 12 + (nudgeY || 0));
+
+      popover.style.setProperty('--tx', `${tx.toFixed(1)}px`);
+      popover.style.setProperty('--ty', `${ty.toFixed(1)}px`);
+      popover.style.setProperty('--dy', placeBelow ? '-8px' : '8px');
+    }
+
+    function showPopover(anchor) {
+      const key = anchor.getAttribute('data-contact-preview');
+      const cfg = CONTACT_CHANNELS[key];
+      if (!cfg) return;
+
+      clearTimeout(hideTimer);
+      activeAnchor = anchor;
+
+      popIdx.textContent = cfg.index;
+      popKind.textContent = cfg.kind;
+      popDomain.textContent = cfg.domain;
+      popFoot.textContent = cfg.foot;
+
+      if (cfg.mode === 'img') {
+        popImg.hidden = false;
+        popSheet.hidden = true;
+        if (popImg.getAttribute('src') !== cfg.src) popImg.setAttribute('src', cfg.src);
+      } else {
+        popImg.hidden = true;
+        popSheet.hidden = false;
+        popTag.textContent = cfg.tag;
+        popKicker.textContent = cfg.kicker;
+        popTitle.textContent = cfg.title;
+        popSub.textContent = cfg.sub;
+        popLoc.textContent = cfg.loc;
+        popCta.textContent = cfg.cta;
+      }
+
+      positionPopover(anchor, 0, 0);
+      popover.classList.add('is-visible');
+    }
+
+    function scheduleHidePopover() {
+      clearTimeout(hideTimer);
+      hideTimer = window.setTimeout(() => {
+        activeAnchor = null;
+        popover.classList.remove('is-visible');
+      }, 90);
+    }
+
+    document.querySelectorAll('[data-contact-preview]').forEach(link => {
+      link.addEventListener('pointerenter', () => {
+        if (!finePointerQuery.matches) return;
+        showPopover(link);
+      });
+      link.addEventListener('pointermove', (e) => {
+        if (!finePointerQuery.matches || activeAnchor !== link || prefersReduced()) return;
+        const rect = link.getBoundingClientRect();
+        const relX = ((e.clientX - rect.left) / Math.max(1, rect.width) - 0.5) * 14;
+        const relY = ((e.clientY - rect.top) / Math.max(1, rect.height) - 0.5) * 6;
+        positionPopover(link, relX, relY);
+      });
+      link.addEventListener('pointerleave', scheduleHidePopover);
+      link.addEventListener('focusin', () => showPopover(link));
+      link.addEventListener('focusout', scheduleHidePopover);
+    });
+
+    window.addEventListener('scroll', () => {
+      if (activeAnchor) scheduleHidePopover();
+    }, { passive: true });
+  }
+
+  initContactPreviews();
+
+  /* ============================================================
+     6. SUBTLE TOPOGRAPHIC FLOW-FIELD CANVAS
+  ============================================================ */
+  function initFlowCanvas() {
+    const canvas = document.getElementById('flow-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d', { alpha: true });
+    if (!ctx) return;
+
+    const PERM = new Uint8Array(512);
+    const p = [
+      151,160,137,91,90,15,131,13,201,95,96,53,194,233,7,225,140,36,103,30,69,142,8,99,37,240,21,10,23,
+      190,6,148,247,120,234,75,0,26,197,62,94,252,219,203,117,35,11,32,57,177,33,88,237,149,56,87,174,20,
+      125,136,171,168,68,175,74,165,71,134,139,48,27,166,77,146,158,231,83,111,229,122,60,211,133,230,220,
+      105,92,41,55,46,245,40,244,102,143,54,65,25,63,161,1,216,80,73,209,76,132,187,208,89,18,169,200,196,
+      135,130,116,188,159,86,164,100,109,198,173,186,3,64,52,217,226,250,124,123,5,202,38,147,118,126,255,
+      82,85,212,207,206,59,227,47,16,58,17,182,189,28,42,223,183,170,213,119,248,152,2,44,154,163,70,221,
+      153,101,155,167,43,172,9,129,22,39,253,19,98,108,110,79,113,224,232,178,185,112,104,218,246,97,228,
+      251,34,242,193,238,210,144,12,191,179,162,241,81,51,145,235,249,14,239,107,49,192,214,31,181,199,106,
+      157,184,84,204,176,115,121,50,45,127,4,150,254,138,236,205,93,222,114,67,29,24,72,243,141,128,195,78,
+      66,215,61,156,180
+    ];
+    for (let i = 0; i < 512; i++) PERM[i] = p[i & 255];
+
+    function fade(t) { return t * t * t * (t * (t * 6 - 15) + 10); }
+    function lerp(a, b, t) { return a + t * (b - a); }
+    function grad(hash, x, y) {
+      const h = hash & 7;
+      const u = h < 4 ? x : y;
+      const v = h < 4 ? y : x;
+      return ((h & 1) ? -u : u) + ((h & 2) ? -2.0 * v : 2.0 * v);
+    }
+    function noise2D(x, y) {
+      const X = Math.floor(x) & 255;
+      const Y = Math.floor(y) & 255;
+      const xf = x - Math.floor(x);
+      const yf = y - Math.floor(y);
+      const u = fade(xf);
+      const v = fade(yf);
+      const aa = PERM[PERM[X] + Y];
+      const ab = PERM[PERM[X] + Y + 1];
+      const ba = PERM[PERM[X + 1] + Y];
+      const bb = PERM[PERM[X + 1] + Y + 1];
+      return lerp(
+        lerp(grad(aa, xf, yf), grad(ba, xf - 1, yf), u),
+        lerp(grad(ab, xf, yf - 1), grad(bb, xf - 1, yf - 1), u),
+        v
+      ) * 0.45;
+    }
+
+    let width = 0;
+    let height = 0;
+    let dpr = 1;
+    let lineCount = 0;
+    let stepsPerLine = 22;
+    let stepLen = 14;
+    let seedsX = new Float32Array(0);
+    let seedsY = new Float32Array(0);
+
+    let pointerX = -9999;
+    let pointerY = -9999;
+    let smoothPX = -9999;
+    let smoothPY = -9999;
+    let pointerActive = false;
+
+    function configureGrid() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      const isMobile = width < 768;
+      const lowPower = (navigator.hardwareConcurrency || 8) <= 4;
+      const maxDpr = isMobile || lowPower ? 1.25 : 1.5;
+      dpr = Math.min(window.devicePixelRatio || 1, maxDpr);
+
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      const cols = isMobile ? 7 : lowPower ? 10 : 14;
+      const rows = isMobile ? 6 : lowPower ? 8 : 10;
+      stepsPerLine = isMobile ? 16 : 22;
+      stepLen = isMobile ? 12 : 14;
+      lineCount = cols * rows;
+
+      seedsX = new Float32Array(lineCount);
+      seedsY = new Float32Array(lineCount);
+
+      let idx = 0;
+      const cellW = width / cols;
+      const cellH = height / rows;
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const jitterX = Math.sin((r * 31 + c * 17) * 1.37) * 0.28;
+          const jitterY = Math.cos((r * 19 + c * 29) * 1.13) * 0.28;
+          seedsX[idx] = (c + 0.5 + jitterX) * cellW;
+          seedsY[idx] = (r + 0.5 + jitterY) * cellH;
+          idx++;
+        }
+      }
+    }
+
+    let phase = 0;
+    let lastDraw = 0;
+    let animId = 0;
+
+    function renderField(now) {
+      animId = 0;
+      if (document.hidden) return;
+
+      if (!prefersReduced() && lastDraw && now - lastDraw < 33) {
+        animId = requestAnimationFrame(renderField);
+        return;
+      }
+      lastDraw = now || performance.now();
+
+      if (!prefersReduced()) {
+        phase += 0.0022;
+      }
+
+      if (pointerActive && finePointerQuery.matches) {
+        smoothPX += (pointerX - smoothPX) * 0.08;
+        smoothPY += (pointerY - smoothPY) * 0.08;
+      }
+
+      ctx.clearRect(0, 0, width, height);
+      ctx.lineWidth = 0.8;
+      ctx.lineCap = 'round';
+      ctx.strokeStyle = `rgba(213, 213, 213, ${BACKGROUND_INTENSITY})`;
+
+      const scale = 0.0017;
+      ctx.beginPath();
+
+      for (let i = 0; i < lineCount; i++) {
+        let x = seedsX[i];
+        let y = seedsY[i];
+        ctx.moveTo(x, y);
+
+        for (let s = 0; s < stepsPerLine; s++) {
+          const angle = noise2D(x * scale + phase, y * scale - phase * 0.65) * Math.PI * 2.1;
+          let vx = Math.cos(angle);
+          let vy = Math.sin(angle);
+
+          if (pointerActive && finePointerQuery.matches) {
+            const dx = x - smoothPX;
+            const dy = y - smoothPY;
+            const distSq = dx * dx + dy * dy;
+            if (distSq < 40000 && distSq > 4) {
+              const dist = Math.sqrt(distSq);
+              const influence = (1 - dist / 200) * 0.28;
+              vx += (-dy / dist) * influence;
+              vy += (dx / dist) * influence;
+            }
+          }
+
+          x += vx * stepLen;
+          y += vy * stepLen;
+          ctx.lineTo(x, y);
+        }
+      }
+      ctx.stroke();
+
+      if (!prefersReduced()) {
+        animId = requestAnimationFrame(renderField);
+      }
+    }
+
+    window.addEventListener('pointermove', (e) => {
+      if (e.pointerType !== 'mouse' || !finePointerQuery.matches || prefersReduced()) return;
+      if (!pointerActive) {
+        smoothPX = e.clientX;
+        smoothPY = e.clientY;
+        pointerActive = true;
+      }
+      pointerX = e.clientX;
+      pointerY = e.clientY;
+    }, { passive: true });
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        if (animId) cancelAnimationFrame(animId);
+        animId = 0;
+      } else if (!prefersReduced() && !animId) {
+        lastDraw = 0;
+        animId = requestAnimationFrame(renderField);
+      }
+    });
+
+    if (typeof reducedMotionQuery.addEventListener === 'function') {
+      reducedMotionQuery.addEventListener('change', () => {
+        if (animId) { cancelAnimationFrame(animId); animId = 0; }
+        renderField(performance.now());
+      });
+    }
+
+    configureGrid();
+    renderField(performance.now());
+
+    let resizeTimer = 0;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(() => {
+        configureGrid();
+        renderField(performance.now());
+      }, 120);
+    }, { passive: true });
+  }
+
+  /* ============================================================
+     INIT SEQUENCE
+  ============================================================ */
+  const reveals = initReveals();
+  measureGallery();
+  window.addEventListener('resize', measureGallery, { passive: true });
+
+  initIntroCurtain(() => {
+    reveals.triggerLoad();
+  });
+
+  requestAnimationFrame(() => initFlowCanvas());
+})();
+</script>
 </body>
 </html>
